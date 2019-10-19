@@ -350,7 +350,6 @@ contract CarbonCreditSteward_v0 is Initializable {
         emit LogForeclosure(currentOwner);
     }
 
-    // // TODO
     // function collectCarbonCredits(uint256 tokenId) public {
 
     // // get the address 
