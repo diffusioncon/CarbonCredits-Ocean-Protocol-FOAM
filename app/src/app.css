@@ -13,7 +13,7 @@ header {
 header h1 {
   font-size: 1.4rem;
   text-align: center;
-  color: white;
+  /* color: white; */
 }
 
 .Grid {
@@ -89,4 +89,29 @@ header h1 {
     font-size: 0.8rem;
     padding: 0.3rem;
   }
+}
+
+#root {
+  height: 100%;
+}
+#image-0 {
+  transform: translate(100px ,-10px);
+}
+#image-1 {
+  transform: translate(10px ,150px);
+}
+#image-3 {
+  transform: translate(200px, 110px);
+}
+#image-4 {
+  transform: translate(150px ,200px);
+}
+#image-5 {
+  transform: translate(100px ,220px);
+}
+#image-6 {
+  transform: translate(-60px ,-10px);
+}
+#image-7 {
+  transform: translate(-100px ,170px);
 }

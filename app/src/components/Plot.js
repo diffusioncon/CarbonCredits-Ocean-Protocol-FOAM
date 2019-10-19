@@ -5,28 +5,28 @@ import UpdateModal from './UpdateModal';
 import BuyModal from './BuyModal';
 import pin from "../img/pin.svg"
 
-export default ({ displayWeb3Actions }) => {
+export default ({ isProviderSelected }) => {
   const tokenId = useTokenId()
   const isCurrentPatron = useIsCurrentPatron(tokenId)
+  const [displayWeb3Actions, setDisplayWeb3Actions] = useState(false)
 
   return <Fragment>
-    <div className='image-container'>
-      <p>plot</p>
-      <img width="30px" src={pin} />
+    <div id={`image-${tokenId}`} className='image-container'>
+      <img onClick={() => setDisplayWeb3Actions(!displayWeb3Actions)} width="70px" src={pin} />
       {!!displayWeb3Actions && (
-        <div className='interaction-button-container'>
+        isProviderSelected ? <div className='interaction-button-container'>
           <div className='interaction-buttons'>
             {isCurrentPatron ? (
               <div>
                 <Fragment>
-                  <p>You own this token</p>
+                  <p>This plot is owned by you</p>
                   <UpdateModal />
                   {/* <TokenOverview /> */}
                 </Fragment>
               </div>
             ) : (
                 <div>
-                  <p>You DON'T own this token</p>
+                  <p>You DON'T own this Plot</p>
                   <BuyModal />
                   {/* <BuyModal />
                     <TokenOverview /> */}
@@ -34,6 +34,10 @@ export default ({ displayWeb3Actions }) => {
               )}
           </div>
         </div>
+          :
+          <div className='interaction-button-container'>
+            <p>You need to connect with Web3 to access this functionality.</p>
+          </div>
       )}
     </div>
   </Fragment>

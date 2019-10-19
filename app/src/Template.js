@@ -31,8 +31,8 @@ export default () => {
       <header>
         {/* <ToastContainer /> */}
         <h1>
-          These ads are always for sale, purchase the ad space and set your own monthly payment...
-            <br /> even make a profit when someone buys the ad space from you
+          Choose a plot of Spekboom to start generating carbon credits.
+            <br /> These plots of Spekboom are always for sale.
             </h1>
         <React.Fragment>
           {!isProviderSelected ?
@@ -53,13 +53,14 @@ export default () => {
               }}
             /> :
             <React.Fragment>
-              <p style={{ color: 'white' }}>You are logged in with: {currentUser}</p>
-              <ToggleButton
+              <p>You are logged in with: {currentUser}</p>
+              {/* <ToggleButton
                 value={displayWeb3Actions}
-                onToggle={() => setDisplayWeb3Actions(!displayWeb3Actions)} />
+              // onToggle={() => setDisplayWeb3Actions(!displayWeb3Actions)}
+              />
               <label>
-                <span style={{ color: 'white' }}>Click toggle to buy ad</span>
-              </label>
+                <span>Toggle to buy Spekboom plot</span>
+              </label> */}
             </React.Fragment>
           }
         </React.Fragment>
@@ -70,7 +71,7 @@ export default () => {
         {/* <UsdPriceProvider> */}
         {([0, 1, 2, 3, 4, 5, 6, 7, 8]).map(i => <div key={i} className="Grid-item">
           <TokenIdProvider tokenId={i}>
-            <Plot displayWeb3Actions={displayWeb3Actions} />
+            <Plot isProviderSelected={isProviderSelected} />
           </TokenIdProvider>
         </div>)}
         {/* </UsdPriceProvider> */}
@@ -93,11 +94,11 @@ export default () => {
           </div>
           <div>
             <a
-              href='https://twitter.com/intent/tweet?button_hashtag=Alwaysforsale.io&ref_src=twsrc%5Etfw'
+              href='https://twitter.com/intent/tweet?button_hashtag=carboncredits.club&ref_src=twsrc%5Etfw'
               className='twitter-hashtag-button'
               data-show-count='false'
             >
-              Tweet #Alwaysforsale
+              Tweet #CarbonCreditsClub
               </a>
           </div>
         </div>
@@ -111,9 +112,9 @@ export default () => {
         <TotalRaised />
       </OfflineContainer> */}
     </div>
-    <div style={{ overflow: 'auto', maxHeight: 200 }}>
+    {/* <div style={{ overflow: 'auto', maxHeight: 200 }}>
       <Example />
-    </div>
+    </div> */}
   </React.Fragment >
 }
 

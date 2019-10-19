@@ -8,7 +8,8 @@ import './app.css'
 import mapBackground from "./img/map-background.png"
 
 const backgroundImgStyle = {
-  backgroundImage: `url(${mapBackground})`
+  backgroundImage: `url(${mapBackground})`,
+  height: '100%'
 }
 class App extends Component {
   render() {
