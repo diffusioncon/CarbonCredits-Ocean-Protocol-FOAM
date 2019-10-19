@@ -359,18 +359,6 @@ contract CarbonCreditSteward_v0 is Initializable {
         emit LogForeclosure(currentOwner);
     }
 
-    // TODO
-    // function collectCarbonCredits(uint256 tokenId) public {
-
-    // // get the address
-    // uint256 timeDelta = timeLastCollected[tokenId].sub(timeAcquired[tokenId]);
-
-    // timeHeld[tokenId][_currentPatron] = timeHeld[tokenId][_currentPatron].add(timeDelta);
-    // carbonCredit.mint(_currentOwner, timeDelta.mul(tokenGenerationRateNumerator[tokenId]));
-
-    // //timeLastCollectedPatron[tokenPatron] = now;
-    // }
-
     function transferAssetTokenTo(uint256 tokenId, address _currentOwner, address _currentPatron, address _newOwner, uint256 _newPrice) internal {
         // TODO: add the patronage rate as a multiplier here: https://github.com/wild-cards/contracts/issues/7
         totalPatronOwnedTokenCost[_newOwner] = totalPatronOwnedTokenCost[_newOwner].add(_newPrice.mul(patronageNumerator[tokenId]));
