@@ -18,7 +18,6 @@ contract CarbonCreditSteward_v0 is Initializable {
 
     mapping(uint256 => uint256) public price; //in wei
     ERC721Patronage_v0 public assetToken; // ERC721 NFT.
-    ERC20PatronageReceipt_v0 public carbonCredit;
 
     mapping(uint256 => uint256) public totalCollected; // all patronage ever collected
     mapping(uint256 => uint256) public currentCollected; // amount currently collected for patron
@@ -70,8 +69,8 @@ contract CarbonCreditSteward_v0 is Initializable {
     // will produce 1 carbon credit per day.
     // i.e. an NFT representing 50 square meters will yeild the owner
     // 50 carbon credits per day.
-    mapping(uint256 => uint256) tokenGenerationRateNumerator; // we can reuse the patronage denominator
-    mapping(uint256 => address) genTokenAddress;
+    mapping(uint256 => uint256) public tokenGenerationRateNumerator; // we can reuse the patronage denominator
+    ERC20PatronageReceipt_v0 public carbonCredit;
 
 
 
@@ -113,7 +112,7 @@ contract CarbonCreditSteward_v0 is Initializable {
        _;
     }
 
-    function initialize(address _assetToken, address _admin, uint256 _patronageDenominator, address _carbonCredit) public initializer {
+    function initialize(address _assetToken, address _admin, uint256 _patronageDenominator, address _carbonCredit ) public initializer {
         assetToken = ERC721Patronage_v0(_assetToken);
         carbonCredit = ERC20PatronageReceipt_v0(_carbonCredit);
         admin = _admin;
@@ -351,6 +350,18 @@ contract CarbonCreditSteward_v0 is Initializable {
         emit LogForeclosure(currentOwner);
     }
 
+    // TODO
+    function collectCarbonCredits(uint256 tokenId) public {
+
+    // get the address 
+    uint256 timeDelta = timeLastCollected[tokenId].sub(timeAcquired[tokenId]);
+
+    timeHeld[tokenId][_currentPatron] = timeHeld[tokenId][_currentPatron].add(timeDelta);
+    carbonCredit.mint(_currentOwner, timeDelta.mul(tokenGenerationRateNumerator[tokenId]));
+
+    //timeLastCollectedPatron[tokenPatron] = now;
+    }
+
     function transferAssetTokenTo(uint256 tokenId, address _currentOwner, address _currentPatron, address _newOwner, uint256 _newPrice) internal {
         // TODO: add the patronage rate as a multiplier here: https://github.com/wild-cards/contracts/issues/7
         totalPatronOwnedTokenCost[_newOwner] = totalPatronOwnedTokenCost[_newOwner].add(_newPrice.mul(patronageNumerator[tokenId]));
@@ -360,7 +371,7 @@ contract CarbonCreditSteward_v0 is Initializable {
 
         // note: it would also tabulate time held in stewardship by smart contract
         timeHeld[tokenId][_currentPatron] = timeHeld[tokenId][_currentPatron].add(timeDelta);
-        carbonCredit._mint(_currentOwner, timeDelta.mul(tokenGenerationRateNumerator[tokenId]));
+        carbonCredit.mint(_currentOwner, timeDelta.mul(tokenGenerationRateNumerator[tokenId]));
         
         assetToken.transferFrom(_currentOwner, _newOwner, tokenId);
 

@@ -28,7 +28,7 @@ async function deploy(options, accounts) {
     contractAlias: 'ERC20PatronageReceipt',
     methodName: 'initialize',
     methodArgs: [
-      "CarbonCreditTokens", "WT", 18, steward.address
+      "CarbonCreditTokens", "CCT", 18, steward.address
     ]
   });
 }
