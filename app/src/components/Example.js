@@ -30,9 +30,9 @@ export default () => {
   const totalRaisedToken1Usd = useTotalPatronageForTokenUsd(1)
   const totalRaisedToken2Usd = useTotalPatronageForTokenUsd(2)
 
-  const depositAbleToWithdraw = useDepositAbleToWithdrawWei(currentUser)
-  const depositAbleToWithdrawEth = useDepositAbleToWithdrawEth(currentUser)
-  const depositAbleToWithdrawUsd = useDepositAbleToWithdrawUsd(currentUser)
+  // const depositAbleToWithdraw = useDepositAbleToWithdrawWei(currentUser)
+  // const depositAbleToWithdrawEth = useDepositAbleToWithdrawEth(currentUser)
+  // const depositAbleToWithdrawUsd = useDepositAbleToWithdrawUsd(currentUser)
 
   const currentPrice0 = useCurrentPriceWei(0)
   const currentPrice1 = useCurrentPriceWei(1)
@@ -70,9 +70,9 @@ export default () => {
     <p>Spekboom Plot 2 has raised: {totalRaisedToken1Usd} USD</p>
     <p>Spekboom Plot 3 has raised: {totalRaisedToken2Usd} USD</p>
 
-    <p>Spekboom Plot 1 has deposit available: {depositAbleToWithdraw} WEI</p>
+    {/* <p>Spekboom Plot 1 has deposit available: {depositAbleToWithdraw} WEI</p>
     <p>Spekboom Plot 1 has deposit available: {depositAbleToWithdrawEth} ETH</p>
-    <p>Spekboom Plot 3 has deposit available: {depositAbleToWithdrawUsd} USD</p>
+    <p>Spekboom Plot 3 has deposit available: {depositAbleToWithdrawUsd} USD</p> */}
 
     <p>Spekboom Plot 1 has current price: {currentPrice0} WEI</p>
     <p>Spekboom Plot 2 has current price: {currentPrice1} WEI</p>

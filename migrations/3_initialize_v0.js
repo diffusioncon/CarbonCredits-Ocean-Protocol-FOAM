@@ -4,6 +4,7 @@ const CarbonCreditSteward_v0 = artifacts.require("CarbonCreditSteward_v0");
 
 const patronageNumerator = 2400000000000
 const patronageDenominator = 1000000000000
+const tokensPerSecond = 317097919838
 
 const image1MetadataJson = {
   location: "def"
@@ -42,6 +43,7 @@ module.exports = function (deployer, networkName, accounts) {
       [0, 1, 2, 3, 4, 5, 6, 7, 8],
       [accounts[0], accounts[0], accounts[0], accounts[0], accounts[0], accounts[0], accounts[0], accounts[0], accounts[0]],
       [patronageNumerator, patronageNumerator, patronageNumerator, patronageNumerator, patronageNumerator, patronageNumerator, patronageNumerator, patronageNumerator, patronageNumerator],
+      [tokensPerSecond, tokensPerSecond, tokensPerSecond, tokensPerSecond, tokensPerSecond, tokensPerSecond, tokensPerSecond, tokensPerSecond, tokensPerSecond],
       { from: accounts[0] }
     )
   })

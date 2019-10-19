@@ -1,0 +1,92 @@
+body {
+  /* background-image: linear-gradient(to right, #434343 0%, #2c2c2c 100%); */
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  height: 24vh;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  text-align: center;
+  color: white;
+}
+
+.Grid {
+  z-index: 1000;
+  width: 60vw;
+  height: 40vh;
+  margin: auto;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.Grid-item {
+  width: 32%;
+  height: 32%;
+  margin: 0.5%;
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-block-text {
+  font-size: 9px;
+}
+
+.interaction-button-container {
+  /* background-color: rgba(10, 10, 10, 0.8); */
+  background-color: rgba(250, 250, 250, 0.8);
+  color: #727272;
+  /* position: absolute; */
+  /* top: 0;
+  width: 100%;
+  height: 100%; */
+  /* transform: translate(0%, -100%);  */
+}
+
+.interaction-buttons {
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  */
+}
+
+.socials {
+  display: inline-block;
+}
+
+.more-info {
+  /* display: inline-block;
+  transform: translate(calc(50vw - 150%) ,-10px) */
+}
+
+.scrollable-content {
+  height: 84%;
+  overflow-y: scroll;
+}
+
+.information-button {
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  .Grid {
+    z-index: 1000;
+    width: 96vw;
+    height: 96vw;
+  }
+  header {
+    height: 20vh;
+  }
+  header h1 {
+    font-size: 0.8rem;
+    padding: 0.3rem;
+  }
+}
