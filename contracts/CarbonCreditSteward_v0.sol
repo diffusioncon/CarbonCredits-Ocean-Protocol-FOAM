@@ -17,6 +17,7 @@ contract CarbonCreditSteward_v0 is Initializable {
 
     mapping(uint256 => uint256) public price; //in wei
     ERC721Patronage_v0 public assetToken; // ERC721 NFT.
+    ERC20PatronageReceipt_v0 public carbonCredit;
 
     mapping(uint256 => uint256) public totalCollected; // all patronage ever collected
     mapping(uint256 => uint256) public currentCollected; // amount currently collected for patron
@@ -43,10 +44,36 @@ contract CarbonCreditSteward_v0 is Initializable {
 
     address public admin;
 
-    // NEW VARIABLES
+
+    // ////////////////////// //
+    // Design spec for hack   //
+    // ////////////////////// //
+    // GOAL: Create a mechanism where holding an always4sale NFT
+    // for a certain period of time, allows the owner to mint/recieve ERC20 tokens.
+    // i.e. Hold an NFT for 1 day may yield 1 ERC20 token.
+
+    // Context: Berlin hackathon (diffusion2019)
+    // User holds an NFT representing the land of spekboom plantation.
+    // If the user holds this land for 1 month, they will have offset X tons of carbon
+    // They therefore recieve X carbon credits (ERC20 tokens).
+    // These tokens can then be burned to verify the carbon neutrality of the entity.
+    
+    // ////////////////////// //
+    // New variables required //
+    // ////////////////////// //
+
     mapping(uint256 => mapping (address => uint256)) public tokensGenerated;
+
+    // Rate at which CarbonCredits will be generated from the NFT.
+    // Intital idea, depending on the land size of the NFT, 1 square meter,
+    // will produce 1 carbon credit per day.
+    // i.e. an NFT representing 50 square meters will yeild the owner
+    // 50 carbon credits per day.
     mapping(uint256 => uint256) tokenGenerationRateNumerator; // we can reuse the patronage denominator
     mapping(uint256 => address) genTokenAddress;
+
+
+
 
     event LogBuy(address indexed owner, uint256 indexed price);
     event LogPriceChange(uint256 indexed newPrice);
@@ -327,9 +354,13 @@ contract CarbonCreditSteward_v0 is Initializable {
         totalPatronOwnedTokenCost[_newOwner] = totalPatronOwnedTokenCost[_newOwner].add(_newPrice.mul(patronageNumerator[tokenId]));
         totalPatronOwnedTokenCost[_currentPatron] = totalPatronOwnedTokenCost[_currentPatron].sub(price[tokenId].mul(patronageNumerator[tokenId]));
 
-        // note: it would also tabulate time held in stewardship by smart contract
-        timeHeld[tokenId][_currentPatron] = timeHeld[tokenId][_currentPatron].add((timeLastCollected[tokenId].sub(timeAcquired[tokenId])));
+        uint256 timeDelta = timeLastCollected[tokenId].sub(timeAcquired[tokenId]);
 
+        // note: it would also tabulate time held in stewardship by smart contract
+        timeHeld[tokenId][_currentPatron] = timeHeld[tokenId][_currentPatron].add(timeDelta);
+        
+        carbonCredit._mint(_currentOwner, timeDelta.mul(tokenGenerationRateNumerator[tokenId]));
+         
         assetToken.transferFrom(_currentOwner, _newOwner, tokenId);
 
         currentPatron[tokenId] = _newOwner;
