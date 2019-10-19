@@ -1,0 +1,24 @@
+body{
+    margin: 0;
+}
+
+h3{
+    font-weight: 700 !important;
+}
+
+.diffusionImage{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+}
+
+.landingContainer {
+    height: 100vh;    
+    background: linear-gradient(45deg, red, blue);
+    background-image: url('./img/background-layer-plant.png');
+    background-size: contain, cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom right; 
+}
