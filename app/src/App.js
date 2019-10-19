@@ -9,7 +9,12 @@ import mapBackground from "./img/map-background.png"
 
 const backgroundImgStyle = {
   backgroundImage: `url(${mapBackground})`,
-  height: '100%'
+  height: '100%',
+  height: '100vh',
+  backgroundSize: "cover",
+  backgroundRepeat: "no-repeat",
+  backgroundAttachment: "fixed",
+  backgroundPosition: "bottom right",
 }
 class App extends Component {
   render() {

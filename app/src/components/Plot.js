@@ -1,7 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { useTokenId } from '../providers/TokenIdContext';
-import { useIsCurrentPatron } from '../providers/Hooks';
+import { useIsCurrentPatron, useTotalPatronageForTokenEth, useTotalPatronageForTokenUsd, useCurrentPriceEth, useCurrentPriceUsd, useForeclosureTimePatron } from '../providers/Hooks';
 import UpdateModal from './UpdateModal';
+import ChangeDeposit from './ChangeDeposit';
 import BuyModal from './BuyModal';
 import pin from "../img/pin.svg"
 
@@ -9,6 +10,18 @@ export default ({ isProviderSelected }) => {
   const tokenId = useTokenId()
   const isCurrentPatron = useIsCurrentPatron(tokenId)
   const [displayWeb3Actions, setDisplayWeb3Actions] = useState(false)
+
+  // const totalRaisedToken0Eth = useTotalPatronageForTokenEth(tokenId)
+  // const totalRaisedToken0Usd = useTotalPatronageForTokenUsd(tokenId)
+
+  const currentPriceEth = useCurrentPriceEth(tokenId)
+  const currentPriceUsd = useCurrentPriceUsd(tokenId)
+  // const foreclosureTime = useForeclosureTimePatron(tokenId)
+
+  const Details = () => <Fragment>
+    <p>This token currently costs {(currentPriceEth | "loading").toString()} ETH <br /><small>({(currentPriceUsd | "loading").toString()} USD)</small></p>
+    {/* <p><small>The deposit will run out on {foreclosureTime.toString()}</small></p> */}
+  </Fragment>
 
   return <Fragment>
     <div id={`image-${tokenId}`} className='image-container'>
@@ -20,16 +33,16 @@ export default ({ isProviderSelected }) => {
               <div>
                 <Fragment>
                   <p>This plot is owned by you</p>
+                  <Details />
                   <UpdateModal />
-                  {/* <TokenOverview /> */}
+                  <ChangeDeposit />
                 </Fragment>
               </div>
             ) : (
                 <div>
                   <p>You DON'T own this Plot</p>
+                  <Details />
                   <BuyModal />
-                  {/* <BuyModal />
-                    <TokenOverview /> */}
                 </div>
               )}
           </div>
