@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -158,18 +159,23 @@ const NavBar = () => {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none', color: '#3F3D4B'}}>
+      <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none', color: '#3F3D4B' }}>
         <Toolbar>
-            <img src={Logo} style={{maxHeight:'100%', height: '60px'}}/> 
-          <Typography className={classes.title} variant="h3" noWrap>
-            Carbon Credits Club
+          <Link to='/'>
+            <img src={Logo} style={{ maxHeight: '100%', height: '60px' }} />
+          </Link>
+          <Link to='/'>
+            <Typography className={classes.title} variant="h3" noWrap>
+              Carbon Credits Club
           </Typography>
+          </Link>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Button color="inherit">Blog</Button>
-            <Button color="inherit">For Farmers</Button>
-            <Button color="inherit">For Carbon Traders</Button>
-            <Button color="inherit">Buy Land</Button>
+            <Link to='/'><Button color="inherit">Home</Button></Link>
+            <a href="https://blog.carboncredits.club"><Button color="inherit">Blog</Button></a>
+            <Link to='/for-farmers'><Button color="inherit">For Farmers</Button></Link>
+            <Link to='/for-carbon-traders'><Button color="inherit">For Carbon Traders</Button></Link>
+            <Link to='/buy-land'><Button color="inherit" color="primary" variant="contained">Buy Land</Button></Link>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton

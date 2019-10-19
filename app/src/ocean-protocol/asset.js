@@ -1,8 +1,8 @@
 const asset = {
   base: {
-    name: '10 Monkey Species Small',
-    dateCreated: '2012-02-01T10:55:11Z',
-    author: 'Mario',
+    name: 'Carbon Credits Dataset',
+    dateCreated: '2019-10-19T10:55:11Z',
+    author: 'Denham',
     license: 'CC0: Public Domain',
     price: '0',
     files: [
@@ -33,9 +33,9 @@ const asset = {
     ],
     checksum: '',
     categories: ['image'],
-    tags: ['image data', 'classification', 'animals'],
+    tags: ['Location', 'Carbon Credits', 'Sustainability'],
     type: 'dataset',
-    description: 'EXAMPLE ONLY ',
+    description: 'A mock data set of our carbon credit data',
     copyrightHolder: 'Unknown',
     workExample: 'image path, id, label',
     links: [

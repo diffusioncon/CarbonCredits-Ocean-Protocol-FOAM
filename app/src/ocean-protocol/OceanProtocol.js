@@ -1,8 +1,22 @@
-import React, { Component } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import { Ocean } from '@oceanprotocol/squid'
+import { Ocean } from '@oceanprotocol/squid' 
+import Loader from '../components/Loader'
 import Web3 from 'web3'
 import asset from './asset'
+import './dashboard.css'
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+import ReactTable from 'react-table'
+import 'react-table/react-table.css'
+
+const useStyles = makeStyles(theme => ({
+  button: {
+    margin: theme.spacing(1),
+  }
+}));
+
 
 let web3
 
@@ -11,16 +25,17 @@ if (window.web3) {
   window.ethereum.enable()
 }
 
-class OceanProtocol extends Component {
-  state = {
-    ocean: undefined,
-    status: '',
-    loading: true,
-    results: []
-  }
 
-  async componentDidMount() {
-    const ocean = await new Ocean.getInstance({
+
+const OceanProtocol = ({ props }) => {
+
+  const [ocean, setOcean] = useState(undefined)  
+  const [loading, setLoading] = useState(true)
+  const [received, setReceived] = useState(false)
+  const [results, setResults] = useState([])
+
+  useEffect(async () => {
+    let ocean = await new Ocean.getInstance({
       web3Provider: web3,
       nodeUri: 'https://nile.dev-ocean.com',
       aquariusUri: 'https://aquarius.marketplace.dev-ocean.com',
@@ -35,56 +50,58 @@ class OceanProtocol extends Component {
       // secretStoreUri: 'http://localhost:12001',
       verbose: true
     })
-    this.setState({ ocean })
-    this.setState({loading: false})
+    setOcean(ocean)
+    setLoading(false)
     console.log('Finished loading contracts.')
-  }
+  }, [])
 
-  async registerAsset() {
+  const registerAsset = async () => {
     try {
-      const accounts = await this.state.ocean.accounts.list()
-      const ddo = await this.state.ocean.assets.create(asset, accounts[0])
+      const accounts = await ocean.accounts.list()
+      const ddo = await ocean.assets.create(asset, accounts[0])
       console.log('Asset successfully submitted.')
       console.log(ddo)
       alert(
         'Asset successfully submitted. Look into your console to see the response DDO object.'
       )
     } catch (error) {
+      console.log('Failed too upload register asset')
       console.error(error.message)
     }
   }
 
-  async searchAssets() {
+  const searchAssets = async () => {
+    setLoading(true)
     try {
-      const search = await this.state.ocean.assets.search(
-        '10 Monkey Species Small'
-      )
-      this.setState({ results: search.results })
-      console.log(search)
-      alert(
-        'Asset successfully retrieved. Look into your console to see the search response.'
-      )
-    } catch (error) {
-      console.error(error.message)
+      const search = await ocean.assets.search(
+        '10 Monkey Species'
+        )
+        setResults(search.results)
+        setReceived(true)
+        console.log(search)
+        setLoading(false)
+      } catch (error) {
+        console.error(error.message)
+        setLoading(false)
     }
   }
 
-  async consumeAsset() {
+  const consumeAsset = async () => {
     try {
       // get all accounts
-      const accounts = await this.state.ocean.accounts.list()
+      const accounts = await ocean.accounts.list()
       // get first asset from search results
-      const consumeAsset = this.state.results[0]
+      const consumeAsset = results[0]
       // get service we want to execute
       const service = consumeAsset.findServiceByType('Access')
       // order service agreement
-      const agreement = await this.state.ocean.assets.order(
+      const agreement = await ocean.assets.order(
         consumeAsset.id,
         service.serviceDefinitionId,
         accounts[0]
       )
       // consume it
-      await this.state.ocean.assets.consume(
+      await ocean.assets.consume(
         agreement,
         consumeAsset.id,
         service.serviceDefinitionId,
@@ -97,31 +114,53 @@ class OceanProtocol extends Component {
     }
   }
 
-  render() {
-    return (
-      <div
-        style={{textAlign: 'center' }}
-      >
-        <h1>
-          <span role="img" aria-label="squid">
-            🦑
-          </span>
-          <br /> My Little Ocean
+  const columns = [
+    {
+      Header: 'Id',
+      accessor: 'id'
+    },
+    {
+      Header: 'Created',
+      accessor: 'created'
+    },
+  ]
+
+  const classes = useStyles();
+  return (
+    <div className='ocean-protocol-dashboard' >      
+      <h1>
+        Ocean Protocol Dashboard
         </h1>
 
-        {!web3 && <p>No Web3 Browser!</p>}
 
-        <button onClick={() => this.registerAsset()} disabled={!web3}>
-          Register asset
-        </button>
-        <hr />
-        <button onClick={() => this.searchAssets()}>Search assets</button>
-        <button onClick={() => this.consumeAsset()} disabled={!web3}>
-          Consume asset
-        </button>
-      </div>
-    )
-  }
+      {!web3 && <p>No Web3 Browser!</p>}
+
+      {
+        loading ?
+          <Loader />
+          :
+          <Fragment>
+            <Button color="primary" variant="contained" onClick={() => registerAsset()} disabled={!web3}>
+              Register asset
+               </Button>
+            <Button color="primary" variant="contained" onClick={() => searchAssets()}>
+              Search assets
+               </Button>
+            {/* <Button color="primary" variant="contained" onClick={() => consumeAsset()} disabled={!web3}>
+              Consume asset
+               </Button> */}
+            {received &&
+              <ReactTable
+                data={results}
+                columns={columns}
+                defaultPageSize={10}
+              />
+            }
+          </Fragment>
+      }
+    </div >
+  )
+
 }
 
 export default OceanProtocol

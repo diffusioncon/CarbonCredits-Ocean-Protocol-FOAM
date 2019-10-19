@@ -1,9 +1,15 @@
 body{
     margin: 0;
+    font-family: 'Lato', 'Helvetica', 'Sans-serif';
 }
 
 h3{
     font-weight: 700 !important;
+}
+
+a{
+    text-decoration: none;
+    color:inherit;
 }
 
 .diffusionImage{
@@ -21,4 +27,16 @@ h3{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: bottom right; 
+}
+
+.loader-image{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+}
+
+.ocean-protocol-dashboard{
+    text-align: center;
 }

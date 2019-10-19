@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import OceanProtocol from './ocean-protocol/OceanProtocol'
+import Routes from './Routes'
 import * as serviceWorker from './serviceWorker'
 
-ReactDOM.render(<OceanProtocol />, document.getElementById('root'))
+ReactDOM.render(<Routes />, document.getElementById('root'))
 
 serviceWorker.unregister()
