@@ -8,7 +8,7 @@ import {
   useDepositAbleToWithdrawWei,
   useDepositAbleToWithdrawEth,
   useDepositAbleToWithdrawUsd,
-  useForeclosureTime,
+  useForeclosureTimePatron,
   useCurrentPriceWei,
   useCurrentPriceEth,
   useCurrentPriceUsd,
@@ -30,9 +30,9 @@ export default () => {
   const totalRaisedToken1Usd = useTotalPatronageForTokenUsd(1)
   const totalRaisedToken2Usd = useTotalPatronageForTokenUsd(2)
 
-  const depositAbleToWithdraw = useDepositAbleToWithdrawWei(currentUser)
-  const depositAbleToWithdrawEth = useDepositAbleToWithdrawEth(currentUser)
-  const depositAbleToWithdrawUsd = useDepositAbleToWithdrawUsd(currentUser)
+  // const depositAbleToWithdraw = useDepositAbleToWithdrawWei(currentUser)
+  // const depositAbleToWithdrawEth = useDepositAbleToWithdrawEth(currentUser)
+  // const depositAbleToWithdrawUsd = useDepositAbleToWithdrawUsd(currentUser)
 
   const currentPrice0 = useCurrentPriceWei(0)
   const currentPrice1 = useCurrentPriceWei(1)
@@ -44,9 +44,9 @@ export default () => {
   const currentPrice1Usd = useCurrentPriceUsd(1)
   const currentPrice2Usd = useCurrentPriceUsd(2)
 
-  // const foreclosureTime0 = useForeclosureTime(0)
-  // const foreclosureTime1 = useForeclosureTime(1)
-  // const foreclosureTime2 = useForeclosureTime(2)
+  const foreclosureTime0 = useForeclosureTimePatron(0)
+  const foreclosureTime1 = useForeclosureTimePatron(1)
+  const foreclosureTime2 = useForeclosureTimePatron(2)
 
   const currentPatron0 = useCurrentPatron(0)
   const currentPatron1 = useCurrentPatron(1)
@@ -70,9 +70,9 @@ export default () => {
     <p>Spekboom Plot 2 has raised: {totalRaisedToken1Usd} USD</p>
     <p>Spekboom Plot 3 has raised: {totalRaisedToken2Usd} USD</p>
 
-    <p>Spekboom Plot 1 has deposit available: {depositAbleToWithdraw} WEI</p>
+    {/* <p>Spekboom Plot 1 has deposit available: {depositAbleToWithdraw} WEI</p>
     <p>Spekboom Plot 1 has deposit available: {depositAbleToWithdrawEth} ETH</p>
-    <p>Spekboom Plot 3 has deposit available: {depositAbleToWithdrawUsd} USD</p>
+    <p>Spekboom Plot 3 has deposit available: {depositAbleToWithdrawUsd} USD</p> */}
 
     <p>Spekboom Plot 1 has current price: {currentPrice0} WEI</p>
     <p>Spekboom Plot 2 has current price: {currentPrice1} WEI</p>
@@ -85,9 +85,9 @@ export default () => {
     <p>Spekboom Plot 3 has current price: {currentPrice2Usd} USD</p>
 
 
-    {/* {(!!foreclosureTime0) && <p>Foreclosure time: {foreclosureTime0.format()}</p>}
+    {(!!foreclosureTime0) && <p>Foreclosure time: {foreclosureTime0.format()}</p>}
     {(!!foreclosureTime1) && <p>Foreclosure time: {foreclosureTime1.format()}</p>}
-    {(!!foreclosureTime2) && <p>Foreclosure time: {foreclosureTime2.format()}</p>} */}
+    {(!!foreclosureTime2) && <p>Foreclosure time: {foreclosureTime2.format()}</p>}
 
     <p>Spekboom Plot 1 current patron: {currentPatron0}</p>
     <p>Spekboom Plot 2 current patron: {currentPatron1}</p>

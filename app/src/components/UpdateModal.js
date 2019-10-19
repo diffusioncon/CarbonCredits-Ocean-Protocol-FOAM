@@ -21,7 +21,6 @@ export default () => {
     send: changePrice,
     TXObjects: changePriceTxObjects
   } = useChangePrice();
-  const { send: changeUrl, TXObjects: changeUrlTxObjects } = useChangeUrl();
 
   return (
     <React.Fragment>
@@ -35,15 +34,6 @@ export default () => {
         Update Price
       </Button>
       &ensp;
-      <Button
-        style={{ width: '100%' }}
-        mainColor='#7A7A7A'
-        size='small'
-        onClick={() => setModalState(modalStates.CHANGE_URL)}
-      >
-        {' '}
-        Update Website
-      </Button>
       <ModalTemplate
         isOpen={modalState === modalStates.UPDATE_PRICE}
         onClose={() => setModalState('')}

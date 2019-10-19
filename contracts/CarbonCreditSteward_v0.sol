@@ -211,6 +211,9 @@ contract CarbonCreditSteward_v0 is Initializable {
     now + depositAbleToWithdraw/(price*nume/denom/365).
     */
     function foreclosureTimePatron(address tokenPatron) public view returns (uint256) {
+        if (totalPatronOwnedTokenCost[tokenPatron] == 0) {
+          return 0;
+        }
         // patronage per second
         uint256 pps = totalPatronOwnedTokenCost[tokenPatron].div(patronageDenominator).div(365 days);
         return now.add(depositAbleToWithdraw(tokenPatron).div(pps)); // zero division if price is zero.
