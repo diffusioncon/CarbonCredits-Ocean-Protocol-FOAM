@@ -6,7 +6,7 @@ async function deploy(options, accounts) {
   add({
     contractsData: [
       { name: 'ERC721Patronage_v0', alias: 'ERC721Patronage' },
-      { name: 'ERC721PatronageReceipt_v0', alias: 'ERC721PatronageReceipt' },
+      { name: 'ERC20PatronageReceipt_v0', alias: 'ERC20PatronageReceipt' },
       { name: 'CarbonCreditSteward_v0', alias: 'CarbonCreditSteward' },
     ]
   });
@@ -25,10 +25,10 @@ async function deploy(options, accounts) {
 
   const patronageReceiptToken = await create({
     ...options,
-    contractAlias: 'ERC721PatronageReceipt',
+    contractAlias: 'ERC20PatronageReceipt',
     methodName: 'initialize',
     methodArgs: [
-      "CarbonCreditTokens", "WT", 18
+      "CarbonCreditTokens", "WT", 18, steward.address
     ]
   });
 }
