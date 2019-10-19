@@ -1,6 +1,7 @@
 body{
     margin: 0;
     font-family: 'Lato', 'Helvetica', 'Sans-serif';
+    overflow-x: hidden;
 }
 
 h3{
@@ -20,7 +21,8 @@ a{
 }
 
 .landingContainer {
-    height: 100vh;    
+    height: 100vh;   
+    width: 100%; 
     background: linear-gradient(45deg, red, blue);
     background-image: url('./img/background-layer-plant.png');
     background-size: contain, cover;
@@ -39,4 +41,9 @@ a{
 
 .ocean-protocol-dashboard{
     text-align: center;
+}
+
+footer{
+    background-color: #3F3D4B;
+    color: white;
 }
