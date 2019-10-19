@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { useTokenId } from '../providers/TokenIdContext';
 import { useIsCurrentPatron } from '../providers/Hooks';
 import UpdateModal from './UpdateModal';
+import ChangeDeposit from './ChangeDeposit';
 import BuyModal from './BuyModal';
 import pin from "../img/pin.svg"
 
@@ -21,15 +22,13 @@ export default ({ isProviderSelected }) => {
                 <Fragment>
                   <p>This plot is owned by you</p>
                   <UpdateModal />
-                  {/* <TokenOverview /> */}
+                  <ChangeDeposit />
                 </Fragment>
               </div>
             ) : (
                 <div>
                   <p>You DON'T own this Plot</p>
                   <BuyModal />
-                  {/* <BuyModal />
-                    <TokenOverview /> */}
                 </div>
               )}
           </div>
