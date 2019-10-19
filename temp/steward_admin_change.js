@@ -2,7 +2,7 @@ const { BN, expectRevert, ether, expectEvent, balance, time } = require('@openze
 const { multiPatronageCalculator } = require('./helpers')
 
 const Artwork = artifacts.require('./ERC721Patronage_v0.sol');
-const WildcardSteward = artifacts.require('./WildcardSteward_v0.sol');
+const WildcardSteward = artifacts.require('./CarbonCreditSteward_v0.sol');
 
 const delay = duration => new Promise(resolve => setTimeout(resolve, duration));
 
