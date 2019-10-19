@@ -1,5 +1,6 @@
 pragma solidity ^0.5.0;
 import "./ERC721Patronage_v0.sol";
+import "./ERC20PatronageReceipt_v0.sol";
 
 contract CarbonCreditSteward_v0 is Initializable {
 
@@ -112,8 +113,9 @@ contract CarbonCreditSteward_v0 is Initializable {
        _;
     }
 
-    function initialize(address _assetToken, address _admin, uint256 _patronageDenominator) public initializer {
+    function initialize(address _assetToken, address _admin, uint256 _patronageDenominator, address _carbonCredit) public initializer {
         assetToken = ERC721Patronage_v0(_assetToken);
+        carbonCredit = ERC20PatronageReceipt_v0(_carbonCredit);
         admin = _admin;
         patronageDenominator = _patronageDenominator;
     }
@@ -358,9 +360,8 @@ contract CarbonCreditSteward_v0 is Initializable {
 
         // note: it would also tabulate time held in stewardship by smart contract
         timeHeld[tokenId][_currentPatron] = timeHeld[tokenId][_currentPatron].add(timeDelta);
-        
         carbonCredit._mint(_currentOwner, timeDelta.mul(tokenGenerationRateNumerator[tokenId]));
-         
+        
         assetToken.transferFrom(_currentOwner, _newOwner, tokenId);
 
         currentPatron[tokenId] = _newOwner;
