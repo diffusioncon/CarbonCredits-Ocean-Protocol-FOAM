@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/truffle-box/drizzle-box#readme",
   "dependencies": {
+    "@openzeppelin/contracts-ethereum-package": "^2.3.0",
+    "@openzeppelin/test-helpers": "^0.5.3",
+    "@openzeppelin/upgrades": "^2.5.3",
     "openzeppelin-solidity": "^2.1.1"
   }
 }
