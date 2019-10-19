@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{237:function(t,e,n){"use strict";n.r(e);var a=n(0),s=(n(1),n(117)),b=n(118);e.default=function(t){var e=t.pageContext.tags;return Object(a.d)(s.d,null,Object(a.d)(b.b,{title:"Tags Page"},"Carbon Credits Club Tags"),Object(a.d)(s.a,null,Object(a.d)(b.e,{list:e})))}}}]);
+//# sourceMappingURL=component---src-pages-tags-jsx-2a030d7b7bfcb3a4aabe.js.map
