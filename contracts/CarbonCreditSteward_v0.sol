@@ -202,6 +202,9 @@ contract CarbonCreditSteward_v0 is Initializable {
     now + depositAbleToWithdraw/(price*nume/denom/365).
     */
     function foreclosureTimePatron(address tokenPatron) public view returns (uint256) {
+        if (totalPatronOwnedTokenCost[tokenPatron] == 0) {
+          return 0;
+        }
         // patronage per second
         uint256 pps = totalPatronOwnedTokenCost[tokenPatron].div(patronageDenominator).div(365 days);
         return now.add(depositAbleToWithdraw(tokenPatron).div(pps)); // zero division if price is zero.
@@ -350,17 +353,17 @@ contract CarbonCreditSteward_v0 is Initializable {
         emit LogForeclosure(currentOwner);
     }
 
-    // TODO
-    function collectCarbonCredits(uint256 tokenId) public {
+    // // TODO
+    // function collectCarbonCredits(uint256 tokenId) public {
 
-    // get the address 
-    uint256 timeDelta = timeLastCollected[tokenId].sub(timeAcquired[tokenId]);
+    // // get the address 
+    // uint256 timeDelta = timeLastCollected[tokenId].sub(timeAcquired[tokenId]);
 
-    timeHeld[tokenId][_currentPatron] = timeHeld[tokenId][_currentPatron].add(timeDelta);
-    carbonCredit.mint(_currentOwner, timeDelta.mul(tokenGenerationRateNumerator[tokenId]));
+    // timeHeld[tokenId][_currentPatron] = timeHeld[tokenId][_currentPatron].add(timeDelta);
+    // carbonCredit.mint(_currentOwner, timeDelta.mul(tokenGenerationRateNumerator[tokenId]));
 
-    //timeLastCollectedPatron[tokenPatron] = now;
-    }
+    // //timeLastCollectedPatron[tokenPatron] = now;
+    // }
 
     function transferAssetTokenTo(uint256 tokenId, address _currentOwner, address _currentPatron, address _newOwner, uint256 _newPrice) internal {
         // TODO: add the patronage rate as a multiplier here: https://github.com/wild-cards/contracts/issues/7

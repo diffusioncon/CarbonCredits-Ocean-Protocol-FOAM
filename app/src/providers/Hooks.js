@@ -69,19 +69,19 @@ export const useAreContractsLoaded = () => {
   })
 }
 
-export const useDepositAbleToWithdrawWei = (userAddress) => {
+export const useDepositAbleToWithdrawWei = (tokenAddress) => {
   const { useCacheCall } = useDrizzle()
   // TODO: should have some error handling here, but react didn't like it (no conditionals around hooks)
-  return useCacheCall(['CarbonCreditSteward_v0'], call => call('CarbonCreditSteward_v0', 'depositAbleToWithdraw', userAddress))
+  return useCacheCall(['CarbonCreditSteward_v0'], call => call('CarbonCreditSteward_v0', 'depositAbleToWithdraw', tokenAddress))
 }
 
-export const useDepositAbleToWithdrawEth = (userAddress) => {
-  const depositToWithdraw = useDepositAbleToWithdrawWei(userAddress)
+export const useDepositAbleToWithdrawEth = (tokenAddress) => {
+  const depositToWithdraw = useDepositAbleToWithdrawWei(tokenAddress)
   return (!!depositToWithdraw) ? fromWei(depositToWithdraw, 'ether') : null
 }
 
-export const useDepositAbleToWithdrawUsd = (userAddress) => {
-  const depositeAbleToWithdrawEth = useDepositAbleToWithdrawEth(userAddress);
+export const useDepositAbleToWithdrawUsd = (tokenAddress) => {
+  const depositeAbleToWithdrawEth = useDepositAbleToWithdrawEth(tokenAddress);
   const usdEthPrice = useUsdEthPrice();
   return (!!depositeAbleToWithdrawEth && !!usdEthPrice) ?
     (usdEthPrice * parseFloat(depositeAbleToWithdrawEth)).toFixed(2)
@@ -89,7 +89,7 @@ export const useDepositAbleToWithdrawUsd = (userAddress) => {
 };
 
 // TODO: maybe using the 'moment.js' library would be beneficial here!
-export const useForeclosureTime = (tokenId) => {
+export const useForeclosureTimePatron = (tokenId) => {
   const { useCacheCall } = useDrizzle()
   const foreclosureTimestamp = useCacheCall(['CarbonCreditSteward_v0'], call => call('CarbonCreditSteward_v0', 'foreclosureTime', tokenId))
   return (!!foreclosureTimestamp) ? moment(foreclosureTimestamp, 'X') : null
