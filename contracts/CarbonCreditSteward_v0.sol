@@ -1,7 +1,7 @@
 pragma solidity ^0.5.0;
 import "./ERC721Patronage_v0.sol";
 
-contract WildcardSteward_v0 is Initializable {
+contract CarbonCreditSteward_v0 is Initializable {
 
     /*
     This smart contract collects patronage from current owner through a Harberger tax model and 
@@ -42,6 +42,11 @@ contract WildcardSteward_v0 is Initializable {
     mapping(uint256 => StewardState) public state;
 
     address public admin;
+
+    // NEW VARIABLES
+    mapping(uint256 => mapping (address => uint256)) public tokensGenerated;
+    mapping(uint256 => uint256) tokenGenerationRateNumerator; // we can reuse the patronage denominator
+    mapping(uint256 => address) genTokenAddress;
 
     event LogBuy(address indexed owner, uint256 indexed price);
     event LogPriceChange(uint256 indexed newPrice);

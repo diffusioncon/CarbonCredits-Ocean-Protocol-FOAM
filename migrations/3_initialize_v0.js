@@ -1,24 +1,15 @@
 const ERC721Patronage_v0 = artifacts.require("ERC721Patronage_v0");
-const WildcardSteward_v0 = artifacts.require("WildcardSteward_v0");
+const CarbonCreditSteward_v0 = artifacts.require("CarbonCreditSteward_v0");
 
 const patronageNumerator = 2400000000000
 const patronageDenominator = 1000000000000
 
 const image1MetadataJson = {
-  artist: "Matty Fraser",
-  name: "Simon",
-
-  // https://ipfs.infura.io/ipfs/QmZt5S8tD7L4nMBo4NTtVDpV3qpteA1DXJwKRmuF318tHd"
-  ipfs: "QmZt5S8tD7L4nMBo4NTtVDpV3qpteA1DXJwKRmuF318tHd",
-  type: "Gorilla"
+  location: "def"
 }
 const image1MetadataString = JSON.stringify(image1MetadataJson)
 const image2MetadataJson = {
-  artist: "Matty Fraser",
-  name: "Andy",
-  // https://ipfs.infura.io/ipfs/QmUjnwmYQE1QjkNpoEdpGwbj1s4cj5gVfEePNPnArbm5Tv
-  ipfs: "QmUjnwmYQE1QjkNpoEdpGwbj1s4cj5gVfEePNPnArbm5Tv",
-  type: "Gorilla"
+  location: "abc"
 }
 const image2MetadataString = JSON.stringify(image2MetadataJson)
 
@@ -30,7 +21,7 @@ module.exports = function (deployer, networkName, accounts) {
     }
 
     const patronageToken = await ERC721Patronage_v0.deployed()
-    const steward = await WildcardSteward_v0.deployed()
+    const steward = await CarbonCreditSteward_v0.deployed()
 
     console.log(await patronageToken.isMinter.call(accounts[0]))
     await Promise.all([

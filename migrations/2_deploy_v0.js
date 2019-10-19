@@ -6,19 +6,29 @@ async function deploy(options, accounts) {
   add({
     contractsData: [
       { name: 'ERC721Patronage_v0', alias: 'ERC721Patronage' },
-      { name: 'WildcardSteward_v0', alias: 'WildcardSteward' },
+      { name: 'ERC721PatronageReceipt_v0', alias: 'ERC721PatronageReceipt' },
+      { name: 'CarbonCreditSteward_v0', alias: 'CarbonCreditSteward' },
     ]
   });
 
   await push(options);
 
-  const steward = await create(Object.assign({ contractAlias: 'WildcardSteward' }, options));
+  const steward = await create(Object.assign({ contractAlias: 'CarbonCreditSteward' }, options));
   const patronageToken = await create({
     ...options,
     contractAlias: 'ERC721Patronage',
     methodName: 'setup',
     methodArgs: [
-      steward.address, "WildcardsTokens", "WT", accounts[0]
+      steward.address, "CarbonCreditGenerators", "WT", accounts[0]
+    ]
+  });
+
+  const patronageReceiptToken = await create({
+    ...options,
+    contractAlias: 'ERC721PatronageReceipt',
+    methodName: 'initialize',
+    methodArgs: [
+      "CarbonCreditTokens", "WT", 18
     ]
   });
 }
