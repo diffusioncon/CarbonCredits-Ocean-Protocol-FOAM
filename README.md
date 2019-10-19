@@ -1,2 +1,11 @@
 # Team-9
-Assetnomics
+
+Transparent, effcient, carbon neutral markets.
+
+Watch this space.
+
+@jonjonclark
+@jasoons
+@denhampreen
+
+Made by team wildcards.world
