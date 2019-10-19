@@ -69,7 +69,7 @@ contract CarbonCreditSteward_v0 is Initializable {
     // will produce 1 carbon credit per day.
     // i.e. an NFT representing 50 square meters will yeild the owner
     // 50 carbon credits per day.
-    mapping(uint256 => uint256) public tokenGenerationRateNumerator; // we can reuse the patronage denominator
+    mapping(uint256 => uint256) public tokenGenerationRate; // we can reuse the patronage denominator
     ERC20PatronageReceipt_v0 public carbonCredit;
 
 
@@ -120,13 +120,14 @@ contract CarbonCreditSteward_v0 is Initializable {
     }
 
     // TODO:: add validation that the token that is complient with the "PatronageToken" ERC721 interface extension somehow!
-    function listNewTokens(uint256[] memory tokens, address payable[] memory _benefactors, uint256[] memory _patronageNumerator) public onlyAdmin {
+    function listNewTokens(uint256[] memory tokens, address payable[] memory _benefactors, uint256[] memory _patronageNumerator, uint256[] memory _tokenGenerationRate) public onlyAdmin {
         assert(tokens.length == _benefactors.length);
         for (uint8 i = 0; i < tokens.length; ++i){
             assert(_benefactors[i]!=address(0));
             benefactors[tokens[i]] = _benefactors[i];
             state[tokens[i]] = StewardState.Foreclosed;
             patronageNumerator[tokens[i]] = _patronageNumerator[i];
+            tokenGenerationRate[tokens[i]] = _tokenGenerationRate[i];
             emit AddToken(tokens[i], _patronageNumerator[i]);
         }
     }
@@ -163,6 +164,14 @@ contract CarbonCreditSteward_v0 is Initializable {
         return totalPatronOwnedTokenCost[tokenPatron].mul(now.sub(timeLastCollectedPatron[tokenPatron]))
           .div(patronageDenominator).div(365 days);
     }
+
+    function creditsDue(address tokenPatron, uint256 tokenId ) public view returns (uint256 creditsDue) {
+        if (now == timeAcquired[tokenId]) return 0;
+        
+         uint256 timeDelta = now.sub(timeAcquired[tokenId]);
+        // note: it would also tabulate time held in stewardship by smart contract
+        return  timeDelta.mul(tokenGenerationRate[tokenId]);
+    }   
 
     function patronageOwedPatronWithTimestamp(address tokenPatron) public view returns (uint256 patronageDue, uint256 timestamp) {
         return (patronageOwedPatron(tokenPatron), now);
@@ -374,7 +383,7 @@ contract CarbonCreditSteward_v0 is Initializable {
 
         // note: it would also tabulate time held in stewardship by smart contract
         timeHeld[tokenId][_currentPatron] = timeHeld[tokenId][_currentPatron].add(timeDelta);
-        carbonCredit.mint(_currentOwner, timeDelta.mul(tokenGenerationRateNumerator[tokenId]));
+        carbonCredit.mint(_currentOwner, timeDelta.mul(tokenGenerationRate[tokenId]));
         
         assetToken.transferFrom(_currentOwner, _newOwner, tokenId);
 
