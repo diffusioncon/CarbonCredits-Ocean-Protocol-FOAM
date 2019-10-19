@@ -1,0 +1,80 @@
+{
+  "stages": {
+    "develop": {
+      "plugins": [],
+      "presets": [
+        {
+          "name": "/home/denham/Desktop/projects/Team-9/blog/node_modules/@emotion/babel-preset-css-prop/dist/babel-preset-css-prop.cjs.js",
+          "options": {
+            "sourceMap": true,
+            "autoLabel": true,
+            "plugins": [],
+            "labelFormat": "[filename]--[local]"
+          }
+        }
+      ],
+      "options": {
+        "cacheDirectory": true,
+        "sourceType": "unambiguous"
+      }
+    },
+    "develop-html": {
+      "plugins": [],
+      "presets": [
+        {
+          "name": "/home/denham/Desktop/projects/Team-9/blog/node_modules/@emotion/babel-preset-css-prop/dist/babel-preset-css-prop.cjs.js",
+          "options": {
+            "sourceMap": true,
+            "autoLabel": true,
+            "plugins": [],
+            "labelFormat": "[filename]--[local]"
+          }
+        }
+      ],
+      "options": {
+        "cacheDirectory": true,
+        "sourceType": "unambiguous"
+      }
+    },
+    "build-html": {
+      "plugins": [],
+      "presets": [
+        {
+          "name": "/home/denham/Desktop/projects/Team-9/blog/node_modules/@emotion/babel-preset-css-prop/dist/babel-preset-css-prop.cjs.js",
+          "options": {
+            "sourceMap": true,
+            "autoLabel": true,
+            "plugins": [],
+            "labelFormat": "[filename]--[local]"
+          }
+        }
+      ],
+      "options": {
+        "cacheDirectory": true,
+        "sourceType": "unambiguous"
+      }
+    },
+    "build-javascript": {
+      "plugins": [],
+      "presets": [
+        {
+          "name": "/home/denham/Desktop/projects/Team-9/blog/node_modules/@emotion/babel-preset-css-prop/dist/babel-preset-css-prop.cjs.js",
+          "options": {
+            "sourceMap": true,
+            "autoLabel": true,
+            "plugins": [],
+            "labelFormat": "[filename]--[local]"
+          }
+        }
+      ],
+      "options": {
+        "cacheDirectory": true,
+        "sourceType": "unambiguous"
+      }
+    }
+  },
+  "browserslist": [
+    ">0.25%",
+    "not dead"
+  ]
+}
