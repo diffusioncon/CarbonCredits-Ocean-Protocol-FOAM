@@ -21,9 +21,15 @@
   },
   "homepage": "https://github.com/truffle-box/drizzle-box#readme",
   "dependencies": {
+    "@oceanprotocol/keeper-contracts": "^0.12.6",
+    "@oceanprotocol/squid": "^0.7.3",
     "@openzeppelin/contracts-ethereum-package": "^2.3.0",
     "@openzeppelin/test-helpers": "^0.5.3",
     "@openzeppelin/upgrades": "^2.5.3",
-    "openzeppelin-solidity": "^2.1.1"
+    "openzeppelin-solidity": "^2.1.1",
+    "web3": "^1.2.1"
+  },
+  "devDependencies": {
+    "@openzeppelin/cli": "^2.5.3"
   }
 }
