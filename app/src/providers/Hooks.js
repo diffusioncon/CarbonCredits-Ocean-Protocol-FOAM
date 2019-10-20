@@ -95,6 +95,22 @@ export const useForeclosureTimePatron = (tokenId) => {
   return (!!foreclosureTimestamp) ? moment(foreclosureTimestamp, 'X') : null
 }
 
+export const useCarbonCreditsOwedWei = (tokenId, patron) => {
+  const { useCacheCall } = useDrizzle()
+  return useCacheCall(['CarbonCreditSteward_v0'], call => call('CarbonCreditSteward_v0', 'creditsDue', patron, tokenId))
+}
+export const useCarbonCreditsOwedEth = (tokenId, patron) => {
+  const depositToWithdraw = useCarbonCreditsOwedWei(tokenId, patron)
+  return (!!depositToWithdraw) ? fromWei(depositToWithdraw, 'ether') : null
+}
+export const useCarbonTokensGeneratedWei = (tokenId, patron) => {
+  const { useCacheCall } = useDrizzle()
+  return useCacheCall(['CarbonCreditSteward_v0'], call => call('CarbonCreditSteward_v0', 'tokensGenerated', tokenId, patron))
+}
+export const useCarbonTokensGeneratedEth = (tokenId, patron) => {
+  const depositToWithdraw = useCarbonTokensGeneratedWei(tokenId, patron)
+  return (!!depositToWithdraw) ? fromWei(depositToWithdraw, 'ether') : null
+}
 export const useCurrentPriceWei = (tokenId) => {
   const { useCacheCall } = useDrizzle()
   return useCacheCall(['CarbonCreditSteward_v0'], call => call('CarbonCreditSteward_v0', 'price', tokenId))

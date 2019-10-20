@@ -1,6 +1,12 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { useTokenId } from '../providers/TokenIdContext';
-import { useIsCurrentPatron, useTotalPatronageForTokenEth, useTotalPatronageForTokenUsd, useCurrentPriceEth, useCurrentPriceUsd, useForeclosureTimePatron } from '../providers/Hooks';
+import {
+  useIsCurrentPatron, useTotalPatronageForTokenEth, useTotalPatronageForTokenUsd, useCurrentPriceEth, useCurrentPriceUsd,
+  useCarbonCreditsOwedEth,
+  useCarbonTokensGeneratedEth,
+  useForeclosureTimePatron,
+  useCurrentUser
+} from '../providers/Hooks';
 import UpdateModal from './UpdateModal';
 import ChangeDeposit from './ChangeDeposit';
 import BuyModal from './BuyModal';
@@ -9,6 +15,10 @@ import pin from "../img/pin.svg"
 export default ({ isProviderSelected }) => {
   const tokenId = useTokenId()
   const isCurrentPatron = useIsCurrentPatron(tokenId)
+  const currentPatron = useCurrentUser()
+  const totalOwed = useCarbonCreditsOwedEth(tokenId, currentPatron)
+  const totalGiven = useCarbonTokensGeneratedEth(tokenId, currentPatron)
+
   const [displayWeb3Actions, setDisplayWeb3Actions] = useState(false)
 
   // const totalRaisedToken0Eth = useTotalPatronageForTokenEth(tokenId)
@@ -21,7 +31,9 @@ export default ({ isProviderSelected }) => {
   const Details = () => <Fragment>
     <p>This token currently costs {(currentPriceEth | "loading").toString()} ETH <br /><small>({(currentPriceUsd | "loading").toString()} USD)</small></p>
     {/* <p><small>The deposit will run out on {foreclosureTime.toString()}</small></p> */}
-  </Fragment>
+    <p>You have been PAID {totalGiven.toString()} carbon credits.</p>
+    <p>You have are OWED {totalOwed.toString()} carbon credits.</p>
+  </Fragment >
 
   return <Fragment>
     <div id={`image-${tokenId}`} className='image-container'>
