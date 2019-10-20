@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import Headroom from 'react-headroom';
-import logo from '../../static/logo/header-logo.png';
+import logo from '../../static/logo/logov1.png';
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -30,11 +30,11 @@ const Nav = styled.nav`
 const NavBar = () => (
   <Headroom calcHeightOnResize disableInlineStyles>
     <StyledLink to="/">
-      <img src={logo} alt="Carbon Credits Logo" />
+      <img src={logo} alt="Carbon Credits Logo" style={{ height: "80px" }} />
     </StyledLink>
     <Nav>
       <a href="https://carboncredits.club">Home</a>
-      <Link to="/">Blog</Link>            
+      <Link to="/">Blog</Link>
     </Nav>
   </Headroom>
 );
