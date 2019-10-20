@@ -4,8 +4,15 @@ body{
     overflow-x: hidden;
 }
 
-h3{
+h2,h3, h4{
+    color: #3F3D4B;
     font-weight: 700 !important;
+}
+
+hr{
+    width: 100px;
+    margin-left: 0;
+    margin-top: 2rem;
 }
 
 a{
@@ -22,13 +29,22 @@ a{
 
 .landingContainer {
     height: 100vh;   
-    width: 100%; 
-    background: linear-gradient(45deg, red, blue);
+    width: 100%;     
     background-image: url('./img/background-layer-plant.png');
     background-size: contain, cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     background-position: bottom right; 
+}
+
+.benefits{    
+    height: 100vh;   
+    width: 100%;     
+    background-image: url('./img/background-layer-reverse.png');
+    background-size: contain, cover;
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-position: top right; 
 }
 
 .loader-image{
@@ -46,4 +62,9 @@ a{
 footer{
     background-color: #3F3D4B;
     color: white;
+}
+
+.opening-blurb{
+    padding-top: 6rem;
+    padding-left: 4rem;
 }

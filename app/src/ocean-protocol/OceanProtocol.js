@@ -2,11 +2,13 @@ import React, { Fragment, useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import { Ocean } from '@oceanprotocol/squid' 
 import Loader from '../components/Loader'
+import NavBar from '../components/NavBar'
 import Web3 from 'web3'
 import asset from './asset'
 import './dashboard.css'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
@@ -127,11 +129,10 @@ const OceanProtocol = ({ props }) => {
 
   const classes = useStyles();
   return (
-    <div className='ocean-protocol-dashboard' >      
-      <h1>
-        Ocean Protocol Dashboard
-        </h1>
+    <div className='ocean-protocol-dashboard' >
+      <NavBar />
 
+    <Typography variant='h2' style={{padding: '1rem'}}>Ocean Protocol Dashboard </Typography> 
 
       {!web3 && <p>No Web3 Browser!</p>}
 
@@ -141,10 +142,10 @@ const OceanProtocol = ({ props }) => {
           :
           <Fragment>
             <Button color="primary" variant="contained" onClick={() => registerAsset()} disabled={!web3}>
-              Register asset
-               </Button>
+              Upload latest Carbon Dataset
+               </Button> {'    '}
             <Button color="primary" variant="contained" onClick={() => searchAssets()}>
-              Search assets
+              Retrieve Latest Dataset
                </Button>
             {/* <Button color="primary" variant="contained" onClick={() => consumeAsset()} disabled={!web3}>
               Consume asset

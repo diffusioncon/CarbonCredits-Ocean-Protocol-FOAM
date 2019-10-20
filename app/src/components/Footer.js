@@ -21,7 +21,10 @@ const Footer = () => {
                     <a href='https://blog.carboncredits.club'>Blog</a>
                     <br/>                    
                     <br/>                    
-                    <Link to='/buy-land'><Button color="inherit" color="primary" variant="contained">Buy Land</Button></Link>
+                    <Link to='/ocean-dashboard'>Ocean Dashboard</Link>
+                    <br/>                    
+                    <br/>                    
+                    <Link to='/buy-land'><Button color="inherit" color="secondary" variant="contained">Buy Land</Button></Link>
                 </Grid>
                 <Grid item xs={12} md={12} style={{ textAlign: 'center', padding: '0.5rem' , paddingTop: '0.1rem'}}>
                     <p>© 2019, Built with ❤ by <a href='https://wildcards.world'>Team Wildcards</a></p>

@@ -165,7 +165,7 @@ const NavBar = () => {
             <img src={Logo} style={{ maxHeight: '100%', height: '60px' }} />
           </Link>
           <Link to='/'>
-            <Typography className={classes.title} variant="h3" noWrap>
+            <Typography className={classes.title} variant="h4" noWrap>
               Carbon Credits Club
           </Typography>
           </Link>

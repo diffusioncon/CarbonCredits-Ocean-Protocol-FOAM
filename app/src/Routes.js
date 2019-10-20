@@ -12,6 +12,14 @@ import Footer from './components/Footer';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main:'#3F3D4B'
+        },        
+        secondary: {
+            main:'#fff'
+        },        
+      },
     typography: {
         fontFamily: 'Lato, Helvetica, sans-serif',
         fontWeight: 700
@@ -24,8 +32,7 @@ const Routes = () => {
     return (
         <MuiThemeProvider theme={theme}>
             <Router>
-                <div>
-                    <NavBar />
+                <div>                    
                     <Switch>
                         <Route path="/for-farmers">
                             <p>For farmers</p>
@@ -40,10 +47,10 @@ const Routes = () => {
                             <p>Buy land zone</p>
                         </Route>
                         <Route path="/terms-and-conditions">
-                            <p>:)</p>
+                            <p style={{height: '100vh'}}>:)</p>
                         </Route>
                         <Route path="/privacy-policy">
-                            <p>:)</p>
+                            <p style={{height: '100vh'}}>:)</p>
                         </Route>
                         <Route path="/">
                             <Home />
