@@ -1,20 +1,20 @@
 var plugins = [{
-      plugin: require('/Users/johanthan/Code/alwaysforsale/Team-9/blog/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
+      plugin: require('/home/denham/Desktop/projects/Team-9/blog/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/Users/johanthan/Code/alwaysforsale/Team-9/blog/node_modules/gatsby-remark-images/gatsby-ssr'),
+      plugin: require('/home/denham/Desktop/projects/Team-9/blog/node_modules/gatsby-remark-images/gatsby-ssr'),
       options: {"plugins":[],"maxWidth":750,"quality":90,"linkImagesToOriginal":true},
     },{
-      plugin: require('/Users/johanthan/Code/alwaysforsale/Team-9/blog/node_modules/gatsby-plugin-typography/gatsby-ssr'),
+      plugin: require('/home/denham/Desktop/projects/Team-9/blog/node_modules/gatsby-plugin-typography/gatsby-ssr'),
       options: {"plugins":[],"pathToConfigModule":"config/typography.js"},
     },{
-      plugin: require('/Users/johanthan/Code/alwaysforsale/Team-9/blog/node_modules/gatsby-plugin-sitemap/gatsby-ssr'),
+      plugin: require('/home/denham/Desktop/projects/Team-9/blog/node_modules/gatsby-plugin-sitemap/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/Users/johanthan/Code/alwaysforsale/Team-9/blog/node_modules/gatsby-plugin-manifest/gatsby-ssr'),
-      options: {"plugins":[],"name":"Carbon Offset Club","short_name":"CarbonCreditClub","description":"Carbon Offset Club","start_url":"/","background_color":"#d3e0ff","theme_color":"#3e7bf2","display":"standalone","icon":"static/logo/favicon.png"},
+      plugin: require('/home/denham/Desktop/projects/Team-9/blog/node_modules/gatsby-plugin-manifest/gatsby-ssr'),
+      options: {"plugins":[],"name":"Carbon Offset Club","short_name":"CarbonCreditsClub","description":"Carbon Offset Club","start_url":"/","background_color":"#d3e0ff","theme_color":"#3e7bf2","display":"standalone","icon":"static/logo/favicon.png"},
     },{
-      plugin: require('/Users/johanthan/Code/alwaysforsale/Team-9/blog/node_modules/gatsby-plugin-offline/gatsby-ssr'),
+      plugin: require('/home/denham/Desktop/projects/Team-9/blog/node_modules/gatsby-plugin-offline/gatsby-ssr'),
       options: {"plugins":[]},
     }]
 // During bootstrap, we write requires at top of this file which looks like:

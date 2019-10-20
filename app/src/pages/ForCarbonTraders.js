@@ -30,7 +30,7 @@ const ForCarbonTraders = () => {
     const classes = useStyles();
     return (
         <div>
-            <div className="landingContainer">
+            <div className="landingContainerFarmers">
                 <NavBar />
                 <div className={classes.root}>
                     <Grid container spacing={3} alignItems="center">
@@ -52,6 +52,11 @@ const ForCarbonTraders = () => {
                             </p> */}
                             </div>
                         </Grid>
+                        <Grid item xs={12} md={6} style={{textAlign: 'center'}}>
+                        <EcoIcon
+                                style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
+                            />
+                            </Grid>                        
                     </Grid>
                 </div>
             </div>
