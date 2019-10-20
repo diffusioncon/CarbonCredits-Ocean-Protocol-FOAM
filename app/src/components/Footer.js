@@ -23,6 +23,9 @@ const Footer = () => {
                     <br/>                    
                     <Link to='/ocean-dashboard'>Ocean Dashboard</Link>
                     <br/>                    
+                    <br/>     
+                    <Link to='/verify-land'><Button color="inherit">Verify Land</Button></Link>               
+                    <br/>                    
                     <br/>                    
                     <Link to='/buy-land'><Button color="inherit" color="secondary" variant="contained">Buy Land</Button></Link>
                 </Grid>

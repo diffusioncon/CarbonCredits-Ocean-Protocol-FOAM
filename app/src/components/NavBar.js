@@ -189,8 +189,7 @@ const NavBar = ({cryptoLanguageMode, handleLanguageToggle}) => {
             <Link to='/'><Button color="inherit">Home</Button></Link>
             <a href="https://blog.carboncredits.club"><Button color="inherit">Blog</Button></a>
             <Link to='/for-farmers'><Button color="inherit">For Farmers</Button></Link>
-            <Link to='/for-carbon-traders'><Button color="inherit">For Carbon Traders</Button></Link>
-            <Link to='/verify-land'><Button color="inherit">Verify Land</Button></Link>
+            <Link to='/for-carbon-traders'><Button color="inherit">For Carbon Traders</Button></Link>           
             <Link to='/buy-land'><Button color="inherit" color="primary" variant="contained">Buy Land</Button></Link>
           </div>
           <div className={classes.sectionMobile}>
