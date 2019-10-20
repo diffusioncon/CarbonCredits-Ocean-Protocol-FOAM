@@ -10,6 +10,10 @@ import Typography from '@material-ui/core/Typography';
 import AddLocationIcon from '@material-ui/icons/AddLocation';
 import BlurCircularIcon from '@material-ui/icons/BlurCircular';
 import EcoIcon from '@material-ui/icons/Eco';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import FireplaceIcon from '@material-ui/icons/Fireplace';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+
 
 import WorkIcon from '@material-ui/icons/Work';
 import LandscapeIcon from '@material-ui/icons/Landscape';
@@ -75,7 +79,7 @@ const home = () => {
                                 style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
                             />
                             <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>1.</Typography>
-                            <Typography variant='h6'>A farmer uploads a Spekboom plantation</Typography>
+                            <Typography variant='h6'>A South African Karoo farmer easily creates a Spekboom plantation with surplus arid land</Typography>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
@@ -84,7 +88,16 @@ const home = () => {
                                 style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
                             />
                             <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>2.</Typography>
-                            <Typography variant='h6'>A company purchases an NFT representing that piece of land</Typography>
+                            <Typography variant='h6'>The spekboom plantation is represented as a Non-Fungible token (NFT)</Typography>
+                        </Paper>
+                    </Grid>
+                    <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
+                        <Paper style={{ padding: '1rem' }}>
+                            <AccessTimeIcon
+                                style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
+                            />
+                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>3.</Typography>
+                            <Typography variant='h6'>The Spekboom NFT is always for sale. Any entity or person can buy it at anytime.</Typography>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
@@ -92,25 +105,26 @@ const home = () => {
                             <EcoIcon
                                 style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
                             />
-                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>3.</Typography>
-                            <Typography variant='h6'>The NFT generates carbon credits while you hold the land</Typography>
+                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>4.</Typography>
+                            <Typography variant='h6'>Holding a spekboom NFT generates carbon credits.</Typography>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
-                        <Paper>
-                            <EcoIcon
-                                style={{ fontSize: 80, padding: '1rem' }}
+                        <Paper style={{ padding: '1rem' }}>
+                            <FireplaceIcon
+                                style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
                             />
-                            <Typography variant='h5'>Transparent</Typography>
-                            <Typography variant='p'>sa;dcbasldcb sdccbasjdcbalsdbvasldcbasjdcba slkjjbsdcca dblabdc a</Typography>
+                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>5.</Typography>
+                            <Typography variant='h6'>Carbon credits are traded or burned as proof of carbon offset.</Typography>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
-                        <Paper>
-                            <EcoIcon
-                                style={{ fontSize: 80, padding: '1rem' }}
+                        <Paper style={{ padding: '1rem' }}>
+                            <MonetizationOnIcon
+                                style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
                             />
-                            <Typography variant='h5'>Transparent</Typography>
+                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>6.</Typography>
+                            <Typography variant='h6'>The farmer generates extra income through using their idle land</Typography>
                         </Paper>
                     </Grid>
                 </Grid>
@@ -132,7 +146,7 @@ const home = () => {
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
                         <LandscapeIcon style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }} />
-                        <Typography variant='h5'>Utilises Arid Land</Typography>
+                        <Typography variant='h5'>Combat Climate Change</Typography>
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
                         <WorkIcon style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }} />
@@ -140,7 +154,7 @@ const home = () => {
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
                         <StoreIcon style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }} />
-                        <Typography variant='h5'>Open Market</Typography>
+                        <Typography variant='h5'>Transparent Market</Typography>
                     </Grid>
                 </Grid>
             </div>
