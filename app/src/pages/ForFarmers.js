@@ -76,16 +76,7 @@ const ForFarmers = () => {
                                 style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
                             />
                             <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>1.</Typography>
-                            <Typography variant='h6'>Simply plant a certain number of hectares of spekboom in your idle arid land.</Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
-                        <Paper style={{ padding: '1rem' }}>
-                            <BlurCircularIcon
-                                style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
-                            />
-                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>2.</Typography>
-                            <Typography variant='h6'>The spekboom plantation is represented as a Non-Fungible token (NFT)</Typography>
+                            <Typography variant='h6'>Plant a certain number of hectares of spekboom in your idle arid land. We will use FOAM protocol to verify the authenticity of your plantation.</Typography>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
@@ -93,26 +84,8 @@ const ForFarmers = () => {
                             <AccessTimeIcon
                                 style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
                             />
-                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>3.</Typography>
-                            <Typography variant='h6'>The Spekboom NFT is always for sale. Any entity or person can buy it at anytime.</Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
-                        <Paper style={{ padding: '1rem' }}>
-                            <EcoIcon
-                                style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
-                            />
-                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>4.</Typography>
-                            <Typography variant='h6'>Holding a spekboom NFT generates carbon credits.</Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
-                        <Paper style={{ padding: '1rem' }}>
-                            <FireplaceIcon
-                                style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
-                            />
-                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>5.</Typography>
-                            <Typography variant='h6'>Carbon credits are traded or burned as proof of carbon offset.</Typography>
+                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>2.</Typography>
+                            <Typography variant='h6'>The rights to the carbon credits from your plantation will be always for sale. This means the owner will have to pay you a consistent 'Harberger tax' for receiving the carbon credits generated from your plantation.</Typography>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
@@ -120,8 +93,8 @@ const ForFarmers = () => {
                             <MonetizationOnIcon
                                 style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
                             />
-                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>6.</Typography>
-                            <Typography variant='h6'>The farmer generates extra income through using their idle land</Typography>
+                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>3.</Typography>
+                            <Typography variant='h6'>Simply sit back, relax and receive contious passive income from your spekboom plantation while making a positive contribution toward climate change.</Typography>
                         </Paper>
                     </Grid>
                 </Grid>
