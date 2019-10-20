@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import { Ocean } from '@oceanprotocol/squid' 
+import { Ocean } from '@oceanprotocol/squid'
 import Loader from '../components/Loader'
 import NavBar from '../components/NavBar'
 import Web3 from 'web3'
@@ -31,10 +31,16 @@ if (window.web3) {
 
 const OceanProtocol = ({ props }) => {
 
-  const [ocean, setOcean] = useState(undefined)  
+  const [ocean, setOcean] = useState(undefined)
+  const [status, setStatus] = useState('')
   const [loading, setLoading] = useState(true)
   const [received, setReceived] = useState(false)
   const [results, setResults] = useState([])
+
+  const setStatusWithTimeout = (msg) => {
+    setStatus(msg)  
+    // setTimeout(setStatus(''), 3000)
+  }
 
   useEffect(async () => {
     let ocean = await new Ocean.getInstance({
@@ -58,33 +64,41 @@ const OceanProtocol = ({ props }) => {
   }, [])
 
   const registerAsset = async () => {
+    setLoading(true)
+    setStatusWithTimeout('Dataset uploading...')
     try {
       const accounts = await ocean.accounts.list()
       const ddo = await ocean.assets.create(asset, accounts[0])
       console.log('Asset successfully submitted.')
       console.log(ddo)
-      alert(
-        'Asset successfully submitted. Look into your console to see the response DDO object.'
-      )
+      setStatusWithTimeout('The dataset was successfully submitted')
+      // alert(
+      //   'Asset successfully submitted. Look into your console to see the response DDO object.'
+      //   )
+      setLoading(false)
     } catch (error) {
       console.log('Failed too upload register asset')
       console.error(error.message)
+      setLoading(false)
     }
   }
 
   const searchAssets = async () => {
     setLoading(true)
+    setStatus('getting data')
     try {
       const search = await ocean.assets.search(
-        '10 Monkey Species'
+        'Carbon Credits Dataset'
         )
         setResults(search.results)
         setReceived(true)
         console.log(search)
         setLoading(false)
+        setStatus('')
       } catch (error) {
         console.error(error.message)
         setLoading(false)
+        setStatus(`There was an error ${error.message}`)
     }
   }
 
@@ -122,6 +136,10 @@ const OceanProtocol = ({ props }) => {
       accessor: 'id'
     },
     {
+      Header: 'Score',
+      accessor: 'score'
+    },
+    {
       Header: 'Created',
       accessor: 'created'
     },
@@ -132,9 +150,14 @@ const OceanProtocol = ({ props }) => {
     <div className='ocean-protocol-dashboard' >
       <NavBar />
 
-    <Typography variant='h2' style={{padding: '1rem'}}>Ocean Protocol Dashboard </Typography> 
+      <Typography variant='h2' style={{ padding: '1rem' }}>Ocean Protocol Dashboard </Typography>
+
+      <p>
+        {status}
+      </p>
 
       {!web3 && <p>No Web3 Browser!</p>}
+
 
       {
         loading ?
@@ -145,8 +168,9 @@ const OceanProtocol = ({ props }) => {
               Upload latest Carbon Dataset
                </Button> {'    '}
             <Button color="primary" variant="contained" onClick={() => searchAssets()}>
-              Retrieve Latest Dataset
+              Retrieve Latest Upload
                </Button>
+
             {/* <Button color="primary" variant="contained" onClick={() => consumeAsset()} disabled={!web3}>
               Consume asset
                </Button> */}
@@ -154,7 +178,7 @@ const OceanProtocol = ({ props }) => {
               <ReactTable
                 data={results}
                 columns={columns}
-                defaultPageSize={10}
+                defaultPageSize={7}
               />
             }
           </Fragment>

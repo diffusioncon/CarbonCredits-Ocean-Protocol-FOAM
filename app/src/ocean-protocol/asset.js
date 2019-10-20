@@ -15,7 +15,7 @@ const asset = {
         compression: 'zip',
         encoding: 'UTF-8',
         url:
-          'https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/assets/training.zip'
+          'https://carboncreditclub.s3.us-east-2.amazonaws.com/dataset.zip'
       },
       {
         index: 1,
@@ -24,7 +24,7 @@ const asset = {
         checksumType: 'MD5',
         contentLength: 928,
         url:
-          'https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/assets/monkey_labels.txt',
+          'https://carboncreditclub.s3.us-east-2.amazonaws.com/datasetmeta.txt',
         resourceId: 'test'
       },
       {
