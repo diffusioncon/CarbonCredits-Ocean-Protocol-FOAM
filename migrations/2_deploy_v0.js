@@ -8,6 +8,7 @@ async function deploy(options, accounts) {
       { name: 'ERC721Patronage_v0', alias: 'ERC721Patronage' },
       { name: 'ERC20PatronageReceipt_v0', alias: 'ERC20PatronageReceipt' },
       { name: 'CarbonCreditSteward_v0', alias: 'CarbonCreditSteward' },
+      // { name: 'CSCFactory', alias: 'CSCFactory' },
     ]
   });
 
@@ -31,6 +32,8 @@ async function deploy(options, accounts) {
       "CarbonCreditTokens", "CCT", 18, steward.address
     ]
   });
+
+  // const cscRegistry = await create(Object.assign({ contractAlias: 'CSCFactory' }, options));
 }
 
 module.exports = function (deployer, networkName, accounts) {
