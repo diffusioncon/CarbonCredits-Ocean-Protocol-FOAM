@@ -4,10 +4,10 @@
       "plugins": [],
       "presets": [
         {
-          "name": "/Users/johanthan/Code/alwaysforsale/Team-9/blog/node_modules/@emotion/babel-preset-css-prop/dist/babel-preset-css-prop.cjs.js",
+          "name": "/home/denham/Desktop/projects/Team-9/blog/node_modules/@emotion/babel-preset-css-prop/dist/babel-preset-css-prop.cjs.js",
           "options": {
-            "sourceMap": true,
-            "autoLabel": true,
+            "sourceMap": false,
+            "autoLabel": false,
             "plugins": [],
             "labelFormat": "[filename]--[local]"
           }
@@ -22,10 +22,10 @@
       "plugins": [],
       "presets": [
         {
-          "name": "/Users/johanthan/Code/alwaysforsale/Team-9/blog/node_modules/@emotion/babel-preset-css-prop/dist/babel-preset-css-prop.cjs.js",
+          "name": "/home/denham/Desktop/projects/Team-9/blog/node_modules/@emotion/babel-preset-css-prop/dist/babel-preset-css-prop.cjs.js",
           "options": {
-            "sourceMap": true,
-            "autoLabel": true,
+            "sourceMap": false,
+            "autoLabel": false,
             "plugins": [],
             "labelFormat": "[filename]--[local]"
           }
@@ -40,10 +40,10 @@
       "plugins": [],
       "presets": [
         {
-          "name": "/Users/johanthan/Code/alwaysforsale/Team-9/blog/node_modules/@emotion/babel-preset-css-prop/dist/babel-preset-css-prop.cjs.js",
+          "name": "/home/denham/Desktop/projects/Team-9/blog/node_modules/@emotion/babel-preset-css-prop/dist/babel-preset-css-prop.cjs.js",
           "options": {
-            "sourceMap": true,
-            "autoLabel": true,
+            "sourceMap": false,
+            "autoLabel": false,
             "plugins": [],
             "labelFormat": "[filename]--[local]"
           }
@@ -58,10 +58,10 @@
       "plugins": [],
       "presets": [
         {
-          "name": "/Users/johanthan/Code/alwaysforsale/Team-9/blog/node_modules/@emotion/babel-preset-css-prop/dist/babel-preset-css-prop.cjs.js",
+          "name": "/home/denham/Desktop/projects/Team-9/blog/node_modules/@emotion/babel-preset-css-prop/dist/babel-preset-css-prop.cjs.js",
           "options": {
-            "sourceMap": true,
-            "autoLabel": true,
+            "sourceMap": false,
+            "autoLabel": false,
             "plugins": [],
             "labelFormat": "[filename]--[local]"
           }
