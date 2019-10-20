@@ -5,6 +5,7 @@ import {
   useCarbonCreditsOwedEth,
   useCarbonTokensGeneratedEth,
   useForeclosureTimePatron,
+  // useGetVerifications,
   useCurrentUser
 } from '../providers/Hooks';
 import UpdateModal from './UpdateModal';
@@ -17,7 +18,10 @@ export default ({ isProviderSelected }) => {
   const isCurrentPatron = useIsCurrentPatron(tokenId)
   const currentPatron = useCurrentUser()
   const totalOwed = useCarbonCreditsOwedEth(tokenId, currentPatron)
-  const totalGiven = useCarbonTokensGeneratedEth(tokenId, currentPatron)
+  // const verifications = useGetVerifications(tokenId)
+
+  // console.log({ verifications })
+  // const totalGiven = useCarbonTokensGeneratedEth(tokenId, currentPatron)
 
   const [displayWeb3Actions, setDisplayWeb3Actions] = useState(false)
 
@@ -31,8 +35,12 @@ export default ({ isProviderSelected }) => {
   const Details = () => <Fragment>
     <p>This token currently costs {(currentPriceEth | "loading").toString()} ETH <br /><small>({(currentPriceUsd | "loading").toString()} USD)</small></p>
     {/* <p><small>The deposit will run out on {foreclosureTime.toString()}</small></p> */}
-    <p>You have been PAID {totalGiven.toString()} carbon credits.</p>
+    {/* <p>You have been PAID {totalGiven.toString()} carbon credits.</p> */}
     <p>You have are OWED {totalOwed.toString()} carbon credits.</p>
+    {/* 
+    <p>This token is verified by {totalOwed.toString()} carbon credits.</p>
+    <p>You have are OWED {totalOwed.toString()} carbon credits.</p>
+    <p>You have are OWED {totalOwed.toString()} carbon credits.</p> */}
   </Fragment >
 
   return <Fragment>

@@ -138,6 +138,12 @@ export const useIsCurrentPatron = (tokenId) => {
   const currentUser = useCurrentUser()
   return !!currentPatron && !!currentUser && currentPatron.toUpperCase() === currentUser.toUpperCase()
 }
+
+// export const useGetVerifications = (tokenId) => {
+//   const { useCacheCall } = useDrizzle()
+//   return useCacheCall(['CarbonCreditSteward_v0'], call => call('CarbonCreditSteward_v0', 'getVerifications', tokenId))
+//   // return useCacheCall(['CarbonCreditSteward_v0'], call => call('CarbonCreditSteward_v0', 'availableDeposit', tokenId))
+// }
 // TODO: get `useTotalTimeHeld` working
 // const useTotalTimeHeld = (addressOfUser) =>
 //       const currentTimeHeld = parseInt(this.getTimeHeld(props, timeHeldKey)) + (parseInt(date.getTime()/1000) - parseInt(this.getTimeAcquired(props))
