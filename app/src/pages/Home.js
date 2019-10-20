@@ -86,7 +86,7 @@ const home = ({cryptoLanguageMode, handleLanguageToggle}) => {
                                 style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
                             />
                             <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>1.</Typography>
-                            <Typography variant='h6'>A South African Karoo farmer easily creates a Spekboom plantation with surplus arid land</Typography>
+                            <Typography variant='h6'>{t("step1")}</Typography>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
@@ -95,7 +95,7 @@ const home = ({cryptoLanguageMode, handleLanguageToggle}) => {
                                 style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
                             />
                             <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>2.</Typography>
-                            <Typography variant='h6'>The spekboom plantation is represented as a Non-Fungible token (NFT)</Typography>
+                            <Typography variant='h6'>{t("step2")}</Typography>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
@@ -104,7 +104,7 @@ const home = ({cryptoLanguageMode, handleLanguageToggle}) => {
                                 style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
                             />
                             <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>3.</Typography>
-                            <Typography variant='h6'>The Spekboom NFT is always for sale. Any entity or person can buy it at anytime.</Typography>
+                            <Typography variant='h6'>{t("step3")}</Typography>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
@@ -113,7 +113,7 @@ const home = ({cryptoLanguageMode, handleLanguageToggle}) => {
                                 style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
                             />
                             <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>4.</Typography>
-                            <Typography variant='h6'>Holding a spekboom NFT generates carbon credits.</Typography>
+                            <Typography variant='h6'>{t('step4')}</Typography>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
@@ -122,7 +122,7 @@ const home = ({cryptoLanguageMode, handleLanguageToggle}) => {
                                 style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
                             />
                             <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>5.</Typography>
-                            <Typography variant='h6'>Carbon credits are traded or burned as proof of carbon offset.</Typography>
+                            <Typography variant='h6'>{t("step5")}</Typography>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>

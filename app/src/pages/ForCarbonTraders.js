@@ -54,7 +54,7 @@ const ForCarbonTraders = () => {
                         </Grid>
                         <Grid item xs={12} md={6} style={{textAlign: 'center'}}>
                         <EcoIcon
-                                style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
+                                style={{ fontSize: 240, padding: '1rem', color: '#3F3D4B' }}
                             />
                             </Grid>                        
                     </Grid>

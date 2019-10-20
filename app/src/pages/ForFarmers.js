@@ -56,6 +56,11 @@ const ForFarmers = () => {
                             </p> */}
                             </div>
                         </Grid>
+                        <Grid item xs={12} md={6} style={{textAlign: 'center'}}>
+                        <AddLocationIcon
+                                style={{ fontSize: 240, padding: '1rem', color: '#3F3D4B' }}
+                            />
+                            </Grid>    
                     </Grid>
                 </div>
             </div>
