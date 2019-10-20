@@ -2,8 +2,8 @@
   "manifestVersion": "2.2",
   "contracts": {
     "ERC721Patronage": "ERC721Patronage_v0",
-    "CarbonCreditSteward": "CarbonCreditSteward_v0",
-    "ERC20PatronageReceipt": "ERC20PatronageReceipt_v0"
+    "ERC20PatronageReceipt": "ERC20PatronageReceipt_v0",
+    "CarbonCreditSteward": "CarbonCreditSteward_v0"
   },
   "dependencies": {},
   "name": "drizzle-box",
