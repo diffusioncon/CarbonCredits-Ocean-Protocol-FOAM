@@ -8,7 +8,9 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 import AddLocationIcon from '@material-ui/icons/AddLocation';
-import WifiTetheringIcon from '@material-ui/icons/WifiTethering';
+import BlurCircularIcon from '@material-ui/icons/BlurCircular';
+import EcoIcon from '@material-ui/icons/Eco';
+
 import WorkIcon from '@material-ui/icons/Work';
 import LandscapeIcon from '@material-ui/icons/Landscape';
 import StoreIcon from '@material-ui/icons/Store';
@@ -78,7 +80,7 @@ const home = () => {
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
                         <Paper style={{ padding: '1rem' }}>
-                            <AddLocationIcon
+                            <BlurCircularIcon
                                 style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
                             />
                             <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>2.</Typography>
@@ -87,7 +89,7 @@ const home = () => {
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
                         <Paper style={{ padding: '1rem' }}>
-                            <AddLocationIcon
+                            <EcoIcon
                                 style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
                             />
                             <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>3.</Typography>
@@ -96,7 +98,7 @@ const home = () => {
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
                         <Paper>
-                            <WifiTetheringIcon
+                            <EcoIcon
                                 style={{ fontSize: 80, padding: '1rem' }}
                             />
                             <Typography variant='h5'>Transparent</Typography>
@@ -105,7 +107,7 @@ const home = () => {
                     </Grid>
                     <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
                         <Paper>
-                            <WifiTetheringIcon
+                            <EcoIcon
                                 style={{ fontSize: 80, padding: '1rem' }}
                             />
                             <Typography variant='h5'>Transparent</Typography>
