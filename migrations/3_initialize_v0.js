@@ -60,14 +60,24 @@ module.exports = function (deployer, networkName, accounts) {
         patronageToken.mintWithTokenURI(steward.address, i, generateMetaDataString(csc, i, geoHashes[i]), { from: accounts[0] }),
       )
     )
-    // console.log(ERC20PatronageReceipt_v0.address)
-    // await steward.initialize(patronageToken.address, accounts[0], patronageDenominator, ERC20PatronageReceipt_v0.address, { from: accounts[0] })
-    // await steward.listNewTokens(
-    //   [0, 1, 2, 3, 4, 5, 6, 7, 8],
-    //   [accounts[0], accounts[0], accounts[0], accounts[0], accounts[0], accounts[0], accounts[0], accounts[0], accounts[0]],
-    //   [patronageNumerator, patronageNumerator, patronageNumerator, patronageNumerator, patronageNumerator, patronageNumerator, patronageNumerator, patronageNumerator, patronageNumerator],
-    //   [tokensPerSecond, tokensPerSecond, tokensPerSecond, tokensPerSecond, tokensPerSecond, tokensPerSecond, tokensPerSecond, tokensPerSecond, tokensPerSecond],
-    //   { from: accounts[0] }
-    // )
+
+    await steward.initialize(patronageToken.address, accounts[0], patronageDenominator, ERC20PatronageReceipt_v0.address, deployedCscRegistry.address, { from: accounts[0] })
+    // NOTE: do this in 2 tx due to gass limit
+    await steward.listNewTokens(
+      [0, 1, 2, 3, 4],
+      [accounts[0], accounts[0], accounts[0], accounts[0], accounts[0]],
+      [patronageNumerator, patronageNumerator, patronageNumerator, patronageNumerator, patronageNumerator],
+      [tokensPerSecond, tokensPerSecond, tokensPerSecond, tokensPerSecond, tokensPerSecond],
+      [cscList[0], cscList[1], cscList[2], cscList[3], cscList[4]],
+      { from: accounts[0] }
+    )
+    await steward.listNewTokens(
+      [5, 6, 7, 8],
+      [accounts[0], accounts[0], accounts[0], accounts[0]],
+      [patronageNumerator, patronageNumerator, patronageNumerator, patronageNumerator],
+      [tokensPerSecond, tokensPerSecond, tokensPerSecond, tokensPerSecond],
+      [cscList[5], cscList[6], cscList[7], cscList[8]],
+      { from: accounts[0] }
+    )
   })
 }

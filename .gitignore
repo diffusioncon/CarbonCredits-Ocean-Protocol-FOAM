@@ -1,6 +1,6 @@
 node_modules
 build
-app/src/contracts
+# app/src/contracts
 .DS_Store
 blog/.cache
 

@@ -1,0 +1,1988 @@
+{
+  "contractName": "CSCFactory",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "cscRegistory",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "registry",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "_address",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_factoryAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_geohash",
+          "type": "bytes8"
+        },
+        {
+          "indexed": false,
+          "name": "_csc",
+          "type": "bytes12"
+        }
+      ],
+      "name": "DeployedCSC",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_geohash",
+          "type": "bytes8"
+        }
+      ],
+      "name": "deploy",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"cscRegistory\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_geohash\",\"type\":\"bytes8\"}],\"name\":\"deploy\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"registry\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"_address\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_factoryAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_geohash\",\"type\":\"bytes8\"},{\"indexed\":false,\"name\":\"_csc\",\"type\":\"bytes12\"}],\"name\":\"DeployedCSC\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/jasoons/Documents/clean-code/Team-9/contracts/CSCFactory.sol\":\"CSCFactory\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/jasoons/Documents/clean-code/Team-9/contracts/CSC.sol\":{\"keccak256\":\"0x6e85df9e670d4f7a8206a267f5d32f250267f5595a51eae60d9439ff0efe27c7\",\"urls\":[\"bzzr://d492d63532524ce379e295e44cc8bcd0c93054dba6eb21edcd220bd20ce19208\"]},\"/home/jasoons/Documents/clean-code/Team-9/contracts/CSCFactory.sol\":{\"keccak256\":\"0x50c2e3522ac7b4107e1bd7214e5673831047a4dee4184ae3407ac4b264955053\",\"urls\":[\"bzzr://9f0fb8bd97c6a0ca2683fa94e298955f707b7718d14460df97c38260cf152169\"]},\"/home/jasoons/Documents/clean-code/Team-9/contracts/CSCRegistry.sol\":{\"keccak256\":\"0xe6d2dd3235c6f6c309733aba4fb2a5608dee2db12eff5348ef7bb2583b7e1027\",\"urls\":[\"bzzr://3072e33d53cd411ce84142c15ca06798e604e20d58ba547ee7bb2b75caa4f7e0\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50604051602080610a0e8339810180604052602081101561003057600080fd5b8101908080519060200190929190505050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505061097d806100916000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80635ae6bc5b1461003b578063ef1aef9414610085575b600080fd5b61004361010e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100cc6004803603602081101561009b57600080fd5b81019080803577ffffffffffffffffffffffffffffffffffffffffffffffff19169060200190929190505050610133565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008082604051610143906103ee565b808277ffffffffffffffffffffffffffffffffffffffffffffffff191677ffffffffffffffffffffffffffffffffffffffffffffffff19168152602001915050604051809103906000f08015801561019f573d6000803e3d6000fd5b5090508073ffffffffffffffffffffffffffffffffffffffff166370eb1ef06000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff166040518263ffffffff1660e01b8152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050600060405180830381600087803b15801561024257600080fd5b505af1158015610256573d6000803e3d6000fd5b505050507f1140bc94ebb202d409d60422b19ca85c939630ff633dda8bcb4cd60343c565728130858473ffffffffffffffffffffffffffffffffffffffff1663d55c3ca36040518163ffffffff1660e01b815260040160206040518083038186803b1580156102c457600080fd5b505afa1580156102d8573d6000803e3d6000fd5b505050506040513d60208110156102ee57600080fd5b8101908080519060200190929190505050604051808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018377ffffffffffffffffffffffffffffffffffffffffffffffff191677ffffffffffffffffffffffffffffffffffffffffffffffff191681526020018273ffffffffffffffffffffffffffffffffffffffff191673ffffffffffffffffffffffffffffffffffffffff1916815260200194505050505060405180910390a180915050919050565b610556806103fc8339019056fe608060405234801561001057600080fd5b506040516020806105568339810180604052602081101561003057600080fd5b8101908080519060200190929190505050806000806101000a81548167ffffffffffffffff021916908360c01c02179055506100806000809054906101000a900460c01b306100ab60201b60201c565b600060086101000a8154816bffffffffffffffffffffffff021916908360a01c021790555050610149565b60008282604051602001808377ffffffffffffffffffffffffffffffffffffffffffffffff191677ffffffffffffffffffffffffffffffffffffffffffffffff191681526008018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b81526014019250505060405160208183030381529060405280519060200120905092915050565b6103fe806101586000396000f3fe608060405234801561001057600080fd5b50600436106100935760003560e01c80636b889952116100665780636b8899521461016e5780636df8f6e61461019057806370eb1ef0146101b2578063d55c3ca3146101f6578063e76e03361461024257610093565b806308e44f88146100985780632fc52377146100ec57806337f10dfb1461010e5780634676f8171461013e575b600080fd5b6100a0610272565b604051808277ffffffffffffffffffffffffffffffffffffffffffffffff191677ffffffffffffffffffffffffffffffffffffffffffffffff1916815260200191505060405180910390f35b6100f4610284565b604051808215151515815260200191505060405180910390f35b61013c6004803603602081101561012457600080fd5b81019080803515159060200190929190505050610297565b005b61016c6004803603602081101561015457600080fd5b810190808035151590602001909291905050506102b4565b005b6101766102d1565b604051808215151515815260200191505060405180910390f35b6101986102e4565b604051808215151515815260200191505060405180910390f35b6101f4600480360360208110156101c857600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506102f7565b005b6101fe6103a2565b604051808273ffffffffffffffffffffffffffffffffffffffff191673ffffffffffffffffffffffffffffffffffffffff1916815260200191505060405180910390f35b6102706004803603602081101561025857600080fd5b810190808035151590602001909291905050506103b5565b005b6000809054906101000a900460c01b81565b600060159054906101000a900460ff1681565b80600060166101000a81548160ff02191690831515021790555050565b80600060156101000a81548160ff02191690831515021790555050565b600060149054906101000a900460ff1681565b600060169054906101000a900460ff1681565b8073ffffffffffffffffffffffffffffffffffffffff1663c5f310c0600060089054906101000a900460a01b6040518263ffffffff1660e01b8152600401808273ffffffffffffffffffffffffffffffffffffffff191673ffffffffffffffffffffffffffffffffffffffff19168152602001915050600060405180830381600087803b15801561038757600080fd5b505af115801561039b573d6000803e3d6000fd5b5050505050565b600060089054906101000a900460a01b81565b80600060146101000a81548160ff0219169083151502179055505056fea165627a7a723058201abe505d7cdd6310d31262b57f4085315ebe62c4c3ea0e292950fa8169838c630029a165627a7a723058202c2693fd275396a18e20c85460071189e3ee02f7902a63fc48b8d08a499f989f0029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80635ae6bc5b1461003b578063ef1aef9414610085575b600080fd5b61004361010e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100cc6004803603602081101561009b57600080fd5b81019080803577ffffffffffffffffffffffffffffffffffffffffffffffff19169060200190929190505050610133565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008082604051610143906103ee565b808277ffffffffffffffffffffffffffffffffffffffffffffffff191677ffffffffffffffffffffffffffffffffffffffffffffffff19168152602001915050604051809103906000f08015801561019f573d6000803e3d6000fd5b5090508073ffffffffffffffffffffffffffffffffffffffff166370eb1ef06000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff166040518263ffffffff1660e01b8152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050600060405180830381600087803b15801561024257600080fd5b505af1158015610256573d6000803e3d6000fd5b505050507f1140bc94ebb202d409d60422b19ca85c939630ff633dda8bcb4cd60343c565728130858473ffffffffffffffffffffffffffffffffffffffff1663d55c3ca36040518163ffffffff1660e01b815260040160206040518083038186803b1580156102c457600080fd5b505afa1580156102d8573d6000803e3d6000fd5b505050506040513d60208110156102ee57600080fd5b8101908080519060200190929190505050604051808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018377ffffffffffffffffffffffffffffffffffffffffffffffff191677ffffffffffffffffffffffffffffffffffffffffffffffff191681526020018273ffffffffffffffffffffffffffffffffffffffff191673ffffffffffffffffffffffffffffffffffffffff1916815260200194505050505060405180910390a180915050919050565b610556806103fc8339019056fe608060405234801561001057600080fd5b506040516020806105568339810180604052602081101561003057600080fd5b8101908080519060200190929190505050806000806101000a81548167ffffffffffffffff021916908360c01c02179055506100806000809054906101000a900460c01b306100ab60201b60201c565b600060086101000a8154816bffffffffffffffffffffffff021916908360a01c021790555050610149565b60008282604051602001808377ffffffffffffffffffffffffffffffffffffffffffffffff191677ffffffffffffffffffffffffffffffffffffffffffffffff191681526008018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b81526014019250505060405160208183030381529060405280519060200120905092915050565b6103fe806101586000396000f3fe608060405234801561001057600080fd5b50600436106100935760003560e01c80636b889952116100665780636b8899521461016e5780636df8f6e61461019057806370eb1ef0146101b2578063d55c3ca3146101f6578063e76e03361461024257610093565b806308e44f88146100985780632fc52377146100ec57806337f10dfb1461010e5780634676f8171461013e575b600080fd5b6100a0610272565b604051808277ffffffffffffffffffffffffffffffffffffffffffffffff191677ffffffffffffffffffffffffffffffffffffffffffffffff1916815260200191505060405180910390f35b6100f4610284565b604051808215151515815260200191505060405180910390f35b61013c6004803603602081101561012457600080fd5b81019080803515159060200190929190505050610297565b005b61016c6004803603602081101561015457600080fd5b810190808035151590602001909291905050506102b4565b005b6101766102d1565b604051808215151515815260200191505060405180910390f35b6101986102e4565b604051808215151515815260200191505060405180910390f35b6101f4600480360360208110156101c857600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506102f7565b005b6101fe6103a2565b604051808273ffffffffffffffffffffffffffffffffffffffff191673ffffffffffffffffffffffffffffffffffffffff1916815260200191505060405180910390f35b6102706004803603602081101561025857600080fd5b810190808035151590602001909291905050506103b5565b005b6000809054906101000a900460c01b81565b600060159054906101000a900460ff1681565b80600060166101000a81548160ff02191690831515021790555050565b80600060156101000a81548160ff02191690831515021790555050565b600060149054906101000a900460ff1681565b600060169054906101000a900460ff1681565b8073ffffffffffffffffffffffffffffffffffffffff1663c5f310c0600060089054906101000a900460a01b6040518263ffffffff1660e01b8152600401808273ffffffffffffffffffffffffffffffffffffffff191673ffffffffffffffffffffffffffffffffffffffff19168152602001915050600060405180830381600087803b15801561038757600080fd5b505af115801561039b573d6000803e3d6000fd5b5050505050565b600060089054906101000a900460a01b81565b80600060146101000a81548160ff0219169083151502179055505056fea165627a7a723058201abe505d7cdd6310d31262b57f4085315ebe62c4c3ea0e292950fa8169838c630029a165627a7a723058202c2693fd275396a18e20c85460071189e3ee02f7902a63fc48b8d08a499f989f0029",
+  "sourceMap": "73:508:1:-;;;228:86;8:9:-1;5:2;;;30:1;27;20:12;5:2;228:86:1;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;228:86:1;;;;;;;;;;;;;;;;300:8;273:12;;:36;;;;;;;;;;;;;;;;;;228:86;73:508;;;;;;",
+  "deployedSourceMap": "73:508:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;73:508:1;;;;;;;;;;;;;;;;;;;;;;;;97:31;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;318:261;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;318:261:1;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;97:31;;;;;;;;;;;;;:::o;318:261::-;367:7;384:10;405:8;397:17;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;397:17:1;384:30;;422:6;:19;;;450:12;;;;;;;;;;;422:42;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;422:42:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;422:42:1;;;;477:67;497:6;514:4;521:8;531:6;:10;;;:12;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;531:12:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;531:12:1;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;531:12:1;;;;;;;;;;;;;;;;477:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;567:6;552:22;;;318:261;;;:::o;73:508::-;;;;;;;;:::o",
+  "source": "pragma solidity ^0.5.0;\nimport \"./CSC.sol\";\nimport \"./CSCRegistry.sol\";\n\ncontract CSCFactory {\n  CSCRegistry public cscRegistory;\n  event DeployedCSC(address _address, address _factoryAddress, bytes8 _geohash, bytes12 _csc);\n\n  constructor(address registry) public {\n      cscRegistory = CSCRegistry(registry);\n  }\n\n  function deploy(bytes8 _geohash) public returns (address) {\n      CSC newCsc = new CSC(_geohash);\n      newCsc.registerWith(address(cscRegistory));\n      emit DeployedCSC(address(newCsc), address(this), _geohash, newCsc.csc());\n      return address(newCsc);\n  }\n}\n",
+  "sourcePath": "/home/jasoons/Documents/clean-code/Team-9/contracts/CSCFactory.sol",
+  "ast": {
+    "absolutePath": "/home/jasoons/Documents/clean-code/Team-9/contracts/CSCFactory.sol",
+    "exportedSymbols": {
+      "CSCFactory": [
+        164
+      ]
+    },
+    "id": 165,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 97,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "absolutePath": "/home/jasoons/Documents/clean-code/Team-9/contracts/CSC.sol",
+        "file": "./CSC.sol",
+        "id": 98,
+        "nodeType": "ImportDirective",
+        "scope": 165,
+        "sourceUnit": 96,
+        "src": "24:19:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/home/jasoons/Documents/clean-code/Team-9/contracts/CSCRegistry.sol",
+        "file": "./CSCRegistry.sol",
+        "id": 99,
+        "nodeType": "ImportDirective",
+        "scope": 165,
+        "sourceUnit": 251,
+        "src": "44:27:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [
+          95
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 164,
+        "linearizedBaseContracts": [
+          164
+        ],
+        "name": "CSCFactory",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 101,
+            "name": "cscRegistory",
+            "nodeType": "VariableDeclaration",
+            "scope": 164,
+            "src": "97:31:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_CSCRegistry_$250",
+              "typeString": "contract CSCRegistry"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 100,
+              "name": "CSCRegistry",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 250,
+              "src": "97:11:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_CSCRegistry_$250",
+                "typeString": "contract CSCRegistry"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 111,
+            "name": "DeployedCSC",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 110,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 103,
+                  "indexed": false,
+                  "name": "_address",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 111,
+                  "src": "150:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 102,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "150:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 105,
+                  "indexed": false,
+                  "name": "_factoryAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 111,
+                  "src": "168:23:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 104,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "168:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 107,
+                  "indexed": false,
+                  "name": "_geohash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 111,
+                  "src": "193:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes8",
+                    "typeString": "bytes8"
+                  },
+                  "typeName": {
+                    "id": 106,
+                    "name": "bytes8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "193:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes8",
+                      "typeString": "bytes8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 109,
+                  "indexed": false,
+                  "name": "_csc",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 111,
+                  "src": "210:12:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes12",
+                    "typeString": "bytes12"
+                  },
+                  "typeName": {
+                    "id": 108,
+                    "name": "bytes12",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "210:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes12",
+                      "typeString": "bytes12"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "149:74:1"
+            },
+            "src": "132:92:1"
+          },
+          {
+            "body": {
+              "id": 122,
+              "nodeType": "Block",
+              "src": "265:49:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 120,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 116,
+                      "name": "cscRegistory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 101,
+                      "src": "273:12:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_CSCRegistry_$250",
+                        "typeString": "contract CSCRegistry"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 118,
+                          "name": "registry",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 113,
+                          "src": "300:8:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 117,
+                        "name": "CSCRegistry",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 250,
+                        "src": "288:11:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_CSCRegistry_$250_$",
+                          "typeString": "type(contract CSCRegistry)"
+                        }
+                      },
+                      "id": 119,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "288:21:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_CSCRegistry_$250",
+                        "typeString": "contract CSCRegistry"
+                      }
+                    },
+                    "src": "273:36:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_CSCRegistry_$250",
+                      "typeString": "contract CSCRegistry"
+                    }
+                  },
+                  "id": 121,
+                  "nodeType": "ExpressionStatement",
+                  "src": "273:36:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 123,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 114,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 113,
+                  "name": "registry",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 123,
+                  "src": "240:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 112,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "240:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "239:18:1"
+            },
+            "returnParameters": {
+              "id": 115,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "265:0:1"
+            },
+            "scope": 164,
+            "src": "228:86:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 162,
+              "nodeType": "Block",
+              "src": "376:203:1",
+              "statements": [
+                {
+                  "assignments": [
+                    131
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 131,
+                      "name": "newCsc",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 162,
+                      "src": "384:10:1",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_CSC_$95",
+                        "typeString": "contract CSC"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 130,
+                        "name": "CSC",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 95,
+                        "src": "384:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_CSC_$95",
+                          "typeString": "contract CSC"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 136,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 134,
+                        "name": "_geohash",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 125,
+                        "src": "405:8:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes8",
+                          "typeString": "bytes8"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes8",
+                          "typeString": "bytes8"
+                        }
+                      ],
+                      "id": 133,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "NewExpression",
+                      "src": "397:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_bytes8_$returns$_t_contract$_CSC_$95_$",
+                        "typeString": "function (bytes8) returns (contract CSC)"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 132,
+                        "name": "CSC",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 95,
+                        "src": "401:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_CSC_$95",
+                          "typeString": "contract CSC"
+                        }
+                      }
+                    },
+                    "id": 135,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "397:17:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_CSC_$95",
+                      "typeString": "contract CSC"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "384:30:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 141,
+                            "name": "cscRegistory",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 101,
+                            "src": "450:12:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_CSCRegistry_$250",
+                              "typeString": "contract CSCRegistry"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_CSCRegistry_$250",
+                              "typeString": "contract CSCRegistry"
+                            }
+                          ],
+                          "id": 140,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "442:7:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": "address"
+                        },
+                        "id": 142,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "442:21:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 137,
+                        "name": "newCsc",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 131,
+                        "src": "422:6:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_CSC_$95",
+                          "typeString": "contract CSC"
+                        }
+                      },
+                      "id": 139,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "registerWith",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 64,
+                      "src": "422:19:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address) external"
+                      }
+                    },
+                    "id": 143,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "422:42:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 144,
+                  "nodeType": "ExpressionStatement",
+                  "src": "422:42:1"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 147,
+                            "name": "newCsc",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 131,
+                            "src": "497:6:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_CSC_$95",
+                              "typeString": "contract CSC"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_CSC_$95",
+                              "typeString": "contract CSC"
+                            }
+                          ],
+                          "id": 146,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "489:7:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": "address"
+                        },
+                        "id": 148,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "489:15:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 150,
+                            "name": "this",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4578,
+                            "src": "514:4:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_CSCFactory_$164",
+                              "typeString": "contract CSCFactory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_CSCFactory_$164",
+                              "typeString": "contract CSCFactory"
+                            }
+                          ],
+                          "id": 149,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "506:7:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": "address"
+                        },
+                        "id": 151,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "506:13:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 152,
+                        "name": "_geohash",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 125,
+                        "src": "521:8:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes8",
+                          "typeString": "bytes8"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "arguments": [],
+                        "expression": {
+                          "argumentTypes": [],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 153,
+                            "name": "newCsc",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 131,
+                            "src": "531:6:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_CSC_$95",
+                              "typeString": "contract CSC"
+                            }
+                          },
+                          "id": 154,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "csc",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 6,
+                          "src": "531:10:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_view$__$returns$_t_bytes12_$",
+                            "typeString": "function () view external returns (bytes12)"
+                          }
+                        },
+                        "id": 155,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "531:12:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes12",
+                          "typeString": "bytes12"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_bytes8",
+                          "typeString": "bytes8"
+                        },
+                        {
+                          "typeIdentifier": "t_bytes12",
+                          "typeString": "bytes12"
+                        }
+                      ],
+                      "id": 145,
+                      "name": "DeployedCSC",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 111,
+                      "src": "477:11:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_bytes8_$_t_bytes12_$returns$__$",
+                        "typeString": "function (address,address,bytes8,bytes12)"
+                      }
+                    },
+                    "id": 156,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "477:67:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 157,
+                  "nodeType": "EmitStatement",
+                  "src": "472:72:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 159,
+                        "name": "newCsc",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 131,
+                        "src": "567:6:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_CSC_$95",
+                          "typeString": "contract CSC"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_CSC_$95",
+                          "typeString": "contract CSC"
+                        }
+                      ],
+                      "id": 158,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "ElementaryTypeNameExpression",
+                      "src": "559:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_address_$",
+                        "typeString": "type(address)"
+                      },
+                      "typeName": "address"
+                    },
+                    "id": 160,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "559:15:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 129,
+                  "id": 161,
+                  "nodeType": "Return",
+                  "src": "552:22:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 163,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deploy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 126,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 125,
+                  "name": "_geohash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 163,
+                  "src": "334:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes8",
+                    "typeString": "bytes8"
+                  },
+                  "typeName": {
+                    "id": 124,
+                    "name": "bytes8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "334:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes8",
+                      "typeString": "bytes8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "333:17:1"
+            },
+            "returnParameters": {
+              "id": 129,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 128,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 163,
+                  "src": "367:7:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 127,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "367:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "366:9:1"
+            },
+            "scope": 164,
+            "src": "318:261:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 165,
+        "src": "73:508:1"
+      }
+    ],
+    "src": "0:582:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/jasoons/Documents/clean-code/Team-9/contracts/CSCFactory.sol",
+    "exportedSymbols": {
+      "CSCFactory": [
+        164
+      ]
+    },
+    "id": 165,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 97,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "absolutePath": "/home/jasoons/Documents/clean-code/Team-9/contracts/CSC.sol",
+        "file": "./CSC.sol",
+        "id": 98,
+        "nodeType": "ImportDirective",
+        "scope": 165,
+        "sourceUnit": 96,
+        "src": "24:19:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/home/jasoons/Documents/clean-code/Team-9/contracts/CSCRegistry.sol",
+        "file": "./CSCRegistry.sol",
+        "id": 99,
+        "nodeType": "ImportDirective",
+        "scope": 165,
+        "sourceUnit": 251,
+        "src": "44:27:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [
+          95
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 164,
+        "linearizedBaseContracts": [
+          164
+        ],
+        "name": "CSCFactory",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 101,
+            "name": "cscRegistory",
+            "nodeType": "VariableDeclaration",
+            "scope": 164,
+            "src": "97:31:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_CSCRegistry_$250",
+              "typeString": "contract CSCRegistry"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 100,
+              "name": "CSCRegistry",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 250,
+              "src": "97:11:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_CSCRegistry_$250",
+                "typeString": "contract CSCRegistry"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 111,
+            "name": "DeployedCSC",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 110,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 103,
+                  "indexed": false,
+                  "name": "_address",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 111,
+                  "src": "150:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 102,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "150:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 105,
+                  "indexed": false,
+                  "name": "_factoryAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 111,
+                  "src": "168:23:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 104,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "168:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 107,
+                  "indexed": false,
+                  "name": "_geohash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 111,
+                  "src": "193:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes8",
+                    "typeString": "bytes8"
+                  },
+                  "typeName": {
+                    "id": 106,
+                    "name": "bytes8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "193:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes8",
+                      "typeString": "bytes8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 109,
+                  "indexed": false,
+                  "name": "_csc",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 111,
+                  "src": "210:12:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes12",
+                    "typeString": "bytes12"
+                  },
+                  "typeName": {
+                    "id": 108,
+                    "name": "bytes12",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "210:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes12",
+                      "typeString": "bytes12"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "149:74:1"
+            },
+            "src": "132:92:1"
+          },
+          {
+            "body": {
+              "id": 122,
+              "nodeType": "Block",
+              "src": "265:49:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 120,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 116,
+                      "name": "cscRegistory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 101,
+                      "src": "273:12:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_CSCRegistry_$250",
+                        "typeString": "contract CSCRegistry"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 118,
+                          "name": "registry",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 113,
+                          "src": "300:8:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 117,
+                        "name": "CSCRegistry",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 250,
+                        "src": "288:11:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_CSCRegistry_$250_$",
+                          "typeString": "type(contract CSCRegistry)"
+                        }
+                      },
+                      "id": 119,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "288:21:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_CSCRegistry_$250",
+                        "typeString": "contract CSCRegistry"
+                      }
+                    },
+                    "src": "273:36:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_CSCRegistry_$250",
+                      "typeString": "contract CSCRegistry"
+                    }
+                  },
+                  "id": 121,
+                  "nodeType": "ExpressionStatement",
+                  "src": "273:36:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 123,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 114,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 113,
+                  "name": "registry",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 123,
+                  "src": "240:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 112,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "240:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "239:18:1"
+            },
+            "returnParameters": {
+              "id": 115,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "265:0:1"
+            },
+            "scope": 164,
+            "src": "228:86:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 162,
+              "nodeType": "Block",
+              "src": "376:203:1",
+              "statements": [
+                {
+                  "assignments": [
+                    131
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 131,
+                      "name": "newCsc",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 162,
+                      "src": "384:10:1",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_CSC_$95",
+                        "typeString": "contract CSC"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 130,
+                        "name": "CSC",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 95,
+                        "src": "384:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_CSC_$95",
+                          "typeString": "contract CSC"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 136,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 134,
+                        "name": "_geohash",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 125,
+                        "src": "405:8:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes8",
+                          "typeString": "bytes8"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes8",
+                          "typeString": "bytes8"
+                        }
+                      ],
+                      "id": 133,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "NewExpression",
+                      "src": "397:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_bytes8_$returns$_t_contract$_CSC_$95_$",
+                        "typeString": "function (bytes8) returns (contract CSC)"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 132,
+                        "name": "CSC",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 95,
+                        "src": "401:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_CSC_$95",
+                          "typeString": "contract CSC"
+                        }
+                      }
+                    },
+                    "id": 135,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "397:17:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_CSC_$95",
+                      "typeString": "contract CSC"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "384:30:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 141,
+                            "name": "cscRegistory",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 101,
+                            "src": "450:12:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_CSCRegistry_$250",
+                              "typeString": "contract CSCRegistry"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_CSCRegistry_$250",
+                              "typeString": "contract CSCRegistry"
+                            }
+                          ],
+                          "id": 140,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "442:7:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": "address"
+                        },
+                        "id": 142,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "442:21:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 137,
+                        "name": "newCsc",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 131,
+                        "src": "422:6:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_CSC_$95",
+                          "typeString": "contract CSC"
+                        }
+                      },
+                      "id": 139,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "registerWith",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 64,
+                      "src": "422:19:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address) external"
+                      }
+                    },
+                    "id": 143,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "422:42:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 144,
+                  "nodeType": "ExpressionStatement",
+                  "src": "422:42:1"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 147,
+                            "name": "newCsc",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 131,
+                            "src": "497:6:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_CSC_$95",
+                              "typeString": "contract CSC"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_CSC_$95",
+                              "typeString": "contract CSC"
+                            }
+                          ],
+                          "id": 146,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "489:7:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": "address"
+                        },
+                        "id": 148,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "489:15:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 150,
+                            "name": "this",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4578,
+                            "src": "514:4:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_CSCFactory_$164",
+                              "typeString": "contract CSCFactory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_CSCFactory_$164",
+                              "typeString": "contract CSCFactory"
+                            }
+                          ],
+                          "id": 149,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "506:7:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": "address"
+                        },
+                        "id": 151,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "506:13:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 152,
+                        "name": "_geohash",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 125,
+                        "src": "521:8:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes8",
+                          "typeString": "bytes8"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "arguments": [],
+                        "expression": {
+                          "argumentTypes": [],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 153,
+                            "name": "newCsc",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 131,
+                            "src": "531:6:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_CSC_$95",
+                              "typeString": "contract CSC"
+                            }
+                          },
+                          "id": 154,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "csc",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 6,
+                          "src": "531:10:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_view$__$returns$_t_bytes12_$",
+                            "typeString": "function () view external returns (bytes12)"
+                          }
+                        },
+                        "id": 155,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "531:12:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes12",
+                          "typeString": "bytes12"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_bytes8",
+                          "typeString": "bytes8"
+                        },
+                        {
+                          "typeIdentifier": "t_bytes12",
+                          "typeString": "bytes12"
+                        }
+                      ],
+                      "id": 145,
+                      "name": "DeployedCSC",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 111,
+                      "src": "477:11:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_bytes8_$_t_bytes12_$returns$__$",
+                        "typeString": "function (address,address,bytes8,bytes12)"
+                      }
+                    },
+                    "id": 156,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "477:67:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 157,
+                  "nodeType": "EmitStatement",
+                  "src": "472:72:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 159,
+                        "name": "newCsc",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 131,
+                        "src": "567:6:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_CSC_$95",
+                          "typeString": "contract CSC"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_CSC_$95",
+                          "typeString": "contract CSC"
+                        }
+                      ],
+                      "id": 158,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "ElementaryTypeNameExpression",
+                      "src": "559:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_address_$",
+                        "typeString": "type(address)"
+                      },
+                      "typeName": "address"
+                    },
+                    "id": 160,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "559:15:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 129,
+                  "id": 161,
+                  "nodeType": "Return",
+                  "src": "552:22:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 163,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deploy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 126,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 125,
+                  "name": "_geohash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 163,
+                  "src": "334:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes8",
+                    "typeString": "bytes8"
+                  },
+                  "typeName": {
+                    "id": 124,
+                    "name": "bytes8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "334:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes8",
+                      "typeString": "bytes8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "333:17:1"
+            },
+            "returnParameters": {
+              "id": 129,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 128,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 163,
+                  "src": "367:7:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 127,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "367:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "366:9:1"
+            },
+            "scope": 164,
+            "src": "318:261:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 165,
+        "src": "73:508:1"
+      }
+    ],
+    "src": "0:582:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {
+    "5": {
+      "events": {
+        "0x1140bc94ebb202d409d60422b19ca85c939630ff633dda8bcb4cd60343c56572": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "_address",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "_factoryAddress",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "_geohash",
+              "type": "bytes8"
+            },
+            {
+              "indexed": false,
+              "name": "_csc",
+              "type": "bytes12"
+            }
+          ],
+          "name": "DeployedCSC",
+          "type": "event",
+          "signature": "0x1140bc94ebb202d409d60422b19ca85c939630ff633dda8bcb4cd60343c56572"
+        }
+      },
+      "links": {},
+      "address": "0x69868bB8D307DCa8A26D919a7F07B5B16bbe0B3a",
+      "transactionHash": "0xce97b601b84ae9cb6eecbe1110c0b43b13b56dcd65d7b4f5720a271d6675a537"
+    }
+  },
+  "schemaVersion": "3.0.16",
+  "updatedAt": "2019-10-20T10:44:03.293Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

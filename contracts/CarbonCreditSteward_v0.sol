@@ -1,6 +1,8 @@
 pragma solidity ^0.5.0;
 import "./ERC721Patronage_v0.sol";
 import "./ERC20PatronageReceipt_v0.sol";
+import "./CSCRegistry.sol";
+import "./CSC.sol";
 
 contract CarbonCreditSteward_v0 is Initializable {
 
@@ -71,9 +73,8 @@ contract CarbonCreditSteward_v0 is Initializable {
     // 50 carbon credits per day.
     mapping(uint256 => uint256) public tokenGenerationRate; // we can reuse the patronage denominator
     ERC20PatronageReceipt_v0 public carbonCredit;
-
-
-
+    CSCRegistry public cscRegistry;
+    mapping(uint256 => bytes12) public cryptoSpacialCoordinates; // we can reuse the patronage denominator
 
     event LogBuy(address indexed owner, uint256 indexed price);
     event LogPriceChange(uint256 indexed newPrice);
@@ -112,15 +113,22 @@ contract CarbonCreditSteward_v0 is Initializable {
        _;
     }
 
-    function initialize(address _assetToken, address _admin, uint256 _patronageDenominator, address _carbonCredit ) public initializer {
+    function initialize(address _assetToken, address _admin, uint256 _patronageDenominator, address _carbonCredit, address _cscRegistry) public initializer {
         assetToken = ERC721Patronage_v0(_assetToken);
         carbonCredit = ERC20PatronageReceipt_v0(_carbonCredit);
+        cscRegistry = CSCRegistry(_cscRegistry);
         admin = _admin;
         patronageDenominator = _patronageDenominator;
     }
 
     // TODO:: add validation that the token that is complient with the "PatronageToken" ERC721 interface extension somehow!
-    function listNewTokens(uint256[] memory tokens, address payable[] memory _benefactors, uint256[] memory _patronageNumerator, uint256[] memory _tokenGenerationRate) public onlyAdmin {
+    function listNewTokens(
+      uint256[] memory tokens, 
+      address payable[] memory _benefactors, 
+      uint256[] memory _patronageNumerator, 
+      uint256[] memory _tokenGenerationRate,
+      bytes12[] memory _cryptoSpacialCoordinates
+     ) public onlyAdmin {
         assert(tokens.length == _benefactors.length);
         for (uint8 i = 0; i < tokens.length; ++i){
             assert(_benefactors[i]!=address(0));
@@ -128,8 +136,18 @@ contract CarbonCreditSteward_v0 is Initializable {
             state[tokens[i]] = StewardState.Foreclosed;
             patronageNumerator[tokens[i]] = _patronageNumerator[i];
             tokenGenerationRate[tokens[i]] = _tokenGenerationRate[i];
+            tokenGenerationRate[tokens[i]] = _tokenGenerationRate[i];
             emit AddToken(tokens[i], _patronageNumerator[i]);
         }
+    }
+
+    function getVerifications(uint256 tokenId) public returns (bool, bool, bool) {
+      CSC csc = CSC(cscRegistry.registry(cryptoSpacialCoordinates[tokenId]));
+      bool isVerifiedByPublic = csc.isVerifiedByPublic();
+      bool isVerifiedByChainlink = csc.isVerifiedByChainlink();
+      bool isVerifiedByIExec = csc.isVerifiedByIExec();
+
+      return (isVerifiedByPublic, isVerifiedByChainlink, isVerifiedByIExec);
     }
 
     function changeReceivingBenefactor(uint256 tokenId, address payable _newReceivingBenefactor)
