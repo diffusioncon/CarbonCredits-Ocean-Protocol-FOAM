@@ -1,5 +1,6 @@
 import React, { Component, Suspense } from "react";
 import Template from "./Template"
+import VerifyLand from "./VerifyLand"
 import Offline from "./wrapper/Offline"
 import DrizzleProvider from './providers/DrizzleProvider'
 import UsdPriceProvider from "./providers/UsdPriceProvider"
@@ -26,7 +27,12 @@ class App extends Component {
           <DrizzleProvider>
             <UsdPriceProvider>
               <Offline>
-                <Template drizzleLoaded={true} />
+                {
+                  this.props.verifyPlot ?
+                    <VerifyLand />
+                    :
+                    <Template drizzleLoaded={true} />
+                }
               </Offline>
             </UsdPriceProvider>
           </DrizzleProvider>

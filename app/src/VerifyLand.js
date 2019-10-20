@@ -1,20 +1,8 @@
 import React, { useState } from "react"
 import Web3Connect from "web3connect"
-import Plot from "./components/Plot"
+import PlotVerify from "./components/PlotVerify"
 import {
   useCurrentUser,
-  // useTotalPatronageForTokenWei,
-  // useTotalPatronageForTokenEth,
-  // useUsdEthPrice,
-  // useTotalPatronageForTokenUsd,
-  // useDepositAbleToWithdrawWei,
-  // useDepositAbleToWithdrawEth,
-  // useDepositAbleToWithdrawUsd,
-  // useForeclosureTime,
-  // useCurrentPriceWei,
-  // useCurrentPriceEth,
-  // useCurrentPriceUsd,
-  // useCurrentPatron,
 } from './providers/Hooks'
 import { useWeb3Setup } from './providers/DrizzleProvider'
 import ToggleButton from 'react-toggle-button'
@@ -31,9 +19,9 @@ export default () => {
       <header>
         {/* <ToastContainer /> */}
         <h1>
-          Choose a plot of Spekboom to start generating carbon credits.
-            <br /> These plots of Spekboom are always for sale.
-            </h1>
+          Choose a plot of Spekboom to edit verifications.
+          <br /> (for demo purposes only).
+        </h1>
         <React.Fragment>
           {!isProviderSelected ?
             <Web3Connect.Button
@@ -71,7 +59,7 @@ export default () => {
         {/* <UsdPriceProvider> */}
         {([0, 1, 2, 3, 4, 5, 6, 7, 8]).map(i => <div key={i} className="Grid-item">
           <TokenIdProvider tokenId={i}>
-            <Plot isProviderSelected={isProviderSelected} />
+            <PlotVerify isProviderSelected={isProviderSelected} />
           </TokenIdProvider>
         </div>)}
         {/* </UsdPriceProvider> */}

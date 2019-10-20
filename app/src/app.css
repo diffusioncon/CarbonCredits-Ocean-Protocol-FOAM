@@ -87,10 +87,6 @@ footer {
   padding-left: 4rem;
 }
 
-header {
-  height: 24vh;
-}
-
 header h1 {
   font-size: 1.4rem;
   text-align: center;
@@ -135,6 +131,8 @@ header h1 {
 
 .socials {
   display: inline-block;
+  position: absolute;
+  bottom: 0;
 }
 
 .scrollable-content {
