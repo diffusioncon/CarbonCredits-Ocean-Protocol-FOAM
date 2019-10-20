@@ -30,19 +30,20 @@ const ForFarmers = () => {
     const classes = useStyles();
     return (
         <div>
-            <div className="landingContainer">
+            <div className="landingContainerFarmers">
                 <NavBar />
                 <div className={classes.root}>
                     <Grid container spacing={3} alignItems="center">
                         <Grid item xs={12} md={6} alignItems="center">
                             <div className='opening-blurb'>
-                                <Typography variant='h3'>Earn extra income with your arid land </Typography>
+                                <Typography variant='h3'>Earn extra income from your unusable land </Typography>
                                 <hr />
                                 <Typography variant='h6'>
                                     Spekboom is <br />
                                     - Cheap to plant <br />
                                     - Grows easily in arid land <br />
-                                    - Can last for up to 200 years.
+                                    - Good to regenerate previously farmed soil <br />
+                                    - Can live for up to 200 years.
                                 </Typography>
                                 {/* <p>
                                     
