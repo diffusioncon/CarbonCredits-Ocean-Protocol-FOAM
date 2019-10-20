@@ -3,15 +3,15 @@ module.exports = {
   title: 'Carbon Offset Club', // Navigation and Site Title
   titleAlt: 'Carbon Offset Club', // Title for JSONLD
   description: 'Carbon Offset Club',
-  url: 'https://blog.carboncredit.club', // Domain of your site. No trailing slash!
-  siteUrl: 'https://blog.carboncredit.club', // url + pathPrefix
+  url: 'https://blog.carboncredits.club', // Domain of your site. No trailing slash!
+  siteUrl: 'https://blog.carboncredits.club', // url + pathPrefix
   siteLanguage: 'en', // Language Tag on <html> element
-  logo: 'static/logo/logo.png', // Used for SEO
-  banner: 'static/logo/banner.png',
+  logo: 'static/logo/logov1.png', // Used for SEO
+  banner: 'static/logo/logov1.png',
   // JSONLD / Manifest
   favicon: 'static/logo/favicon.png', // Used for manifest favicon generation
-  shortName: 'CarbonCreditClub', // shortname for manifest. MUST be shorter than 12 characters
-  author: 'CarbonCreditClub', // Author for schemaORGJSONLD
+  shortName: 'CarbonCreditsClub', // shortname for manifest. MUST be shorter than 12 characters
+  author: 'CarbonCreditsClub', // Author for schemaORGJSONLD
   themeColor: '#3e7bf2',
-  backgroundColor: '#d3e0ff',  
+  backgroundColor: '#d3e0ff',
 };

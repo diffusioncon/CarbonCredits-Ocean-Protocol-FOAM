@@ -1,15 +1,16 @@
 import React from 'react'
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
 } from "react-router-dom";
 import Home from './pages/Home'
 import OceanProtocol from './ocean-protocol/OceanProtocol'
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import App from './App'
 
 const theme = createMuiTheme({
     palette: {

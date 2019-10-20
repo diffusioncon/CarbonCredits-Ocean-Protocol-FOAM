@@ -1,17 +1,17 @@
 import Typography from 'typography';
 
 export const typography = new Typography({
-  title: 'Carbon Credits ads',
+  title: 'Carbon Credits club',
   baseFontSize: '18px',
   baseLineHeight: 1.45,
   headerFontFamily: [
     'Lato',
-    'Helvetica', 
+    'Helvetica',
     'sans-serif',
   ],
   bodyFontFamily: [
     'Lato',
-    'Helvetica', 
+    'Helvetica',
     'sans-serif',
   ],
   headerWeight: 700,

@@ -5,3 +5,5 @@ app/src/contracts
 blog/.cache
 
 .openzeppelin/.session
+
+secretsManager.js

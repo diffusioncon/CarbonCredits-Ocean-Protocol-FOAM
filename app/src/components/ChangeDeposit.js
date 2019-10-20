@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Box, Input } from 'rimble-ui';
+import { Button, Box, Input, Radio } from 'rimble-ui';
 import {
   useChangePrice,
 } from '../providers/Hooks';
@@ -16,6 +16,7 @@ const modalStates = {
 export default () => {
   const [modalState, setModalState] = useState('');
   const [priceInput, setPriceInput] = useState(0);
+  const [addDeposit, setAddDeposit] = useState(true);
   const tokenId = useTokenId();
   const {
     send: changePrice,
@@ -31,7 +32,7 @@ export default () => {
         onClick={() => setModalState(modalStates.UPDATE_PRICE)}
       >
         {' '}
-        Update Price
+        Add/Remove Deposit
       </Button>
       &ensp;
       <ModalTemplate
@@ -40,10 +41,11 @@ export default () => {
       >
         <TxTemplate txObjects={changePriceTxObjects}>
           <Box p={4} mb={3}>
+            <Radio label={addDeposit ? "add deposit" : "remove deposit"} checked={addDeposit} onClick={() => setAddDeposit(!addDeposit)} />
             <Input
               type='number'
               value={priceInput}
-              placeholder={`Price`}
+              placeholder={`Deposit`}
               onChange={event => {
                 const newPriceFloat = parseFloat(event.target.value); // convert to float for safety
                 const newPrice =
@@ -67,7 +69,7 @@ export default () => {
                 changePrice(tokenId, priceForTx);
               }}
             >
-              Update
+              {addDeposit ? "Add" : "Remove"}
             </Button>
           </Box>
         </TxTemplate>
