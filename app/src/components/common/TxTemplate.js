@@ -11,7 +11,7 @@ export default ({ txObjects, children }) => txObjects.length > 0 ?
             switch (txObjects[0].status) {
               case 'pending':
                 return <Fragment>
-                  <Text>The transaction was is being processed.</Text>
+                  <Text>The transaction is busy being processed.</Text>
                   <Loader color='red' size='80px' />
                 </Fragment>
               case 'error':
