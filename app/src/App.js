@@ -6,6 +6,7 @@ import UsdPriceProvider from "./providers/UsdPriceProvider"
 // const DrizzleProvider = React.lazy(() => import('./DrizzleProvider'));
 import './app.css'
 import mapBackground from "./img/map-background.png"
+import NavBar from './components/NavBar'
 
 const backgroundImgStyle = {
   backgroundImage: `url(${mapBackground})`,
@@ -13,22 +14,24 @@ const backgroundImgStyle = {
   height: '100vh',
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
-  backgroundAttachment: "fixed",
   backgroundPosition: "bottom right",
 }
 class App extends Component {
   render() {
     return (
       // <Suspense fallback={<Template drizzleLoaded={false} />}> // TODO: use React.lazy to load drizzle lazily
-      <div style={backgroundImgStyle}>
-        <DrizzleProvider>
-          <UsdPriceProvider>
-            <Offline>
-              <Template drizzleLoaded={true} />
-            </Offline>
-          </UsdPriceProvider>
-        </DrizzleProvider>
-      </div>
+      <React.Fragment>
+        <NavBar />
+        <div style={backgroundImgStyle}>
+          <DrizzleProvider>
+            <UsdPriceProvider>
+              <Offline>
+                <Template drizzleLoaded={true} />
+              </Offline>
+            </UsdPriceProvider>
+          </DrizzleProvider>
+        </div>
+      </React.Fragment>
       // </Suspense>
     );
   }

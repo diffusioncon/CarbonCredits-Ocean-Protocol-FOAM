@@ -11,6 +11,8 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import App from './App'
+import ForCarbonTraders from './pages/ForCarbonTraders';
+import ForFarmers from './pages/ForFarmers';
 
 const theme = createMuiTheme({
     palette: {
@@ -36,22 +38,24 @@ const Routes = () => {
                 <div>                    
                     <Switch>
                         <Route path="/for-farmers">
-                            <p>For farmers</p>
+                            <ForFarmers/>
                         </Route>
                         <Route path="/for-carbon-traders">
-                            <p>For Carbon Traders</p>
+                            <ForCarbonTraders/>
                         </Route>
                         <Route path="/ocean-dashboard">
                             <OceanProtocol />
                         </Route>
                         <Route path="/buy-land">
-                            <p>Buy land zone</p>
+                            <App/>
                         </Route>
                         <Route path="/terms-and-conditions">
-                            <p style={{height: '100vh'}}>:)</p>
+                            <NavBar/>
+                            <p style={{height: '70vh'}}>Terms and conditions page :)</p>
                         </Route>
                         <Route path="/privacy-policy">
-                            <p style={{height: '100vh'}}>:)</p>
+                            <NavBar/>
+                            <p style={{height: '70vh'}}>Privacy Policy Page :)</p>
                         </Route>
                         <Route path="/">
                             <Home />
