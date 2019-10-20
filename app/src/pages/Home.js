@@ -1,4 +1,7 @@
 import React, { Fragment } from 'react'
+
+import { useTranslate } from "react-translate"
+
 import diffusionHackathonImage from '../img/Diffusion-2019_logo.png'
 
 import NavBar from '../components/NavBar'
@@ -31,21 +34,25 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const home = () => {
+const home = ({cryptoLanguageMode, handleLanguageToggle}) => {
+    let t = useTranslate(cryptoLanguageMode ? 'crypto' : 'muggle');
     const classes = useStyles();
     return (
         <Fragment>
 
             <div className="landingContainer">
-                <NavBar />
+                <NavBar 
+                     cryptoLanguageMode={cryptoLanguageMode}
+                     handleLanguageToggle={handleLanguageToggle}
+                />
                 <div className={classes.root}>
                     <Grid container spacing={3} alignItems="center">
                         <Grid item xs={12} md={6} alignItems="center">
                             <div className='opening-blurb'>
-                                <Typography variant='h2'>Transparent & Verifiable Carbon Credits </Typography>
+                                <Typography variant='h2'>{t('What')} </Typography>
                                 <hr />
-                                <Typography variant='h5'>
-                                    A decentralised platform connecting unusable farm lands to companies and individuals that want to offset their carbon footprint
+                                <Typography variant='h5'>                                
+                                    {t("Subtext")}
                                 </Typography>
                                 {/* <p>
                                     
