@@ -1,60 +1,56 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from "react";
 
-import { useTranslate } from "react-translate"
+import { useTranslate } from "react-translate";
 
-import diffusionHackathonImage from '../img/Diffusion-2019_logo.png'
+import diffusionHackathonImage from "../img/Diffusion-2019_logo.png";
 
-import NavBar from '../components/NavBar'
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import NavBar from "../components/NavBar";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
-import AddLocationIcon from '@material-ui/icons/AddLocation';
-import BlurCircularIcon from '@material-ui/icons/BlurCircular';
-import EcoIcon from '@material-ui/icons/Eco';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import FireplaceIcon from '@material-ui/icons/Fireplace';
-import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import AddLocationIcon from "@material-ui/icons/AddLocation";
+import BlurCircularIcon from "@material-ui/icons/BlurCircular";
+import EcoIcon from "@material-ui/icons/Eco";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import FireplaceIcon from "@material-ui/icons/Fireplace";
+import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 
-
-import WorkIcon from '@material-ui/icons/Work';
-import LandscapeIcon from '@material-ui/icons/Landscape';
-import StoreIcon from '@material-ui/icons/Store';
+import WorkIcon from "@material-ui/icons/Work";
+import LandscapeIcon from "@material-ui/icons/Landscape";
+import StoreIcon from "@material-ui/icons/Store";
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-        alignItems: "center",
-    },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-    },
+  root: {
+    flexGrow: 1,
+    alignItems: "center"
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary
+  }
 }));
 
-const home = ({cryptoLanguageMode, handleLanguageToggle}) => {
-    let t = useTranslate(cryptoLanguageMode ? 'crypto' : 'muggle');
-    const classes = useStyles();
-    return (
-        <Fragment>
-
-            <div className="landingContainer">
-                <NavBar 
-                     cryptoLanguageMode={cryptoLanguageMode}
-                     handleLanguageToggle={handleLanguageToggle}
-                />
-                <div className={classes.root}>
-                    <Grid container spacing={3} alignItems="center">
-                        <Grid item xs={12} md={6} alignItems="center">
-                            <div className='opening-blurb'>
-                                <Typography variant='h2'>{t('What')} </Typography>
-                                <hr />
-                                <Typography variant='h5'>                                
-                                    {t("Subtext")}
-                                </Typography>
-                                {/* <p>
+const home = ({ cryptoLanguageMode, handleLanguageToggle }) => {
+  let t = useTranslate(cryptoLanguageMode ? "crypto" : "muggle");
+  const classes = useStyles();
+  return (
+    <Fragment>
+      <div className="landingContainer">
+        <NavBar
+          cryptoLanguageMode={cryptoLanguageMode}
+          handleLanguageToggle={handleLanguageToggle}
+        />
+        <div className={classes.root}>
+          <Grid container spacing={3} alignItems="center">
+            <Grid item xs={12} md={6} alignItems="center">
+              <div className="opening-blurb">
+                <Typography variant="h2">{t("What")} </Typography>
+                <hr />
+                <Typography variant="h5">{t("Subtext")}</Typography>
+                {/* <p>
                                     
                                     A decentralized marketplace generating carbon credits & supporting carbon offset farms.  <br /> <br />
                                     Spekboom plantations in the Karoo of South Africa provide <br /> one of the most cost effective carbon offset solutions. <br />
@@ -63,110 +59,245 @@ const home = ({cryptoLanguageMode, handleLanguageToggle}) => {
 
                                     Corporations can burn carbon credits to transparently showcase they are carbon neutral.
                             </p> */}
-                            </div>
-                        </Grid>
-                    </Grid>
-                </div>
-            </div>
-            <div className='blurb'>
-                <Grid container spacing={3} >
-                    <Grid item xs={12} md={12} style={{ textAlign: 'center', padding: '5rem' }}>
-                        <Typography variant='h3' style={{ color: "white" }}>Spekboom thicket is ten times more effective than the Amazon rainforest at offsetting carbon emissions</Typography>
-                    </Grid>
-                </Grid>
-            </div>
-            <div className='howitworks'>
-                <Grid container spacing={3} >
-                    <Grid item xs={12} md={12} style={{ textAlign: 'center', padding: '2rem' }}>
-                        <Typography variant='h2'>How it Works</Typography>
-                    </Grid>
-                    <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
-                        <Paper style={{ padding: '1rem' }}>
-                            <AddLocationIcon
-                                style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
-                            />
-                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>1.</Typography>
-                            <Typography variant='h6'>{t("step1")}</Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
-                        <Paper style={{ padding: '1rem' }}>
-                            <BlurCircularIcon
-                                style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
-                            />
-                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>2.</Typography>
-                            <Typography variant='h6'>{t("step2")}</Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
-                        <Paper style={{ padding: '1rem' }}>
-                            <AccessTimeIcon
-                                style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
-                            />
-                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>3.</Typography>
-                            <Typography variant='h6'>{t("step3")}</Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
-                        <Paper style={{ padding: '1rem' }}>
-                            <EcoIcon
-                                style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
-                            />
-                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>4.</Typography>
-                            <Typography variant='h6'>{t('step4')}</Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
-                        <Paper style={{ padding: '1rem' }}>
-                            <FireplaceIcon
-                                style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
-                            />
-                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>5.</Typography>
-                            <Typography variant='h6'>{t("step5")}</Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
-                        <Paper style={{ padding: '1rem' }}>
-                            <MonetizationOnIcon
-                                style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }}
-                            />
-                            <Typography variant='h3' style={{ color: "#58C685", textAlign: 'left', transform: 'translate(0, -40px)' }}>6.</Typography>
-                            <Typography variant='h6'>The farmer generates extra income through using their idle land</Typography>
-                        </Paper>
-                    </Grid>
-                </Grid>
-            </div>
-            <div className='diffusion-hackathon'>
-                <Grid container spacing={3} >
-                    <Grid item xs={12} md={6} style={{ padding: '2rem' }}>
-                        <img src={diffusionHackathonImage} style={{ width: '80%', padding: ' 1rem 3rem', margin: 'auto' }} />
-                    </Grid>
-                    <Grid item xs={12} md={6} style={{ textAlign: 'right', padding: '2rem' }}>
-                        <Typography variant='h3' style={{ color: 'white' }}>This project was developed at the Diffusion 2019 Hackathon in Berlin</Typography>
-                    </Grid>
-                </Grid>
-            </div>
-            <div className='benefits'>
-                <Grid container spacing={3} >
-                    <Grid item xs={12} md={12} style={{ textAlign: 'center', paddingTop: '4rem' }}>
-                        <Typography variant='h2'>Benefits</Typography>
-                    </Grid>
-                    <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
-                        <LandscapeIcon style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }} />
-                        <Typography variant='h5'>Combat Climate Change</Typography>
-                    </Grid>
-                    <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
-                        <WorkIcon style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }} />
-                        <Typography variant='h5'>Create's Employment</Typography>
-                    </Grid>
-                    <Grid item xs={12} md={4} style={{ textAlign: 'center', padding: '2rem' }}>
-                        <StoreIcon style={{ fontSize: 100, padding: '1rem', color: '#3F3D4B' }} />
-                        <Typography variant='h5'>Transparent Market</Typography>
-                    </Grid>
-                </Grid>
-            </div>
-        </Fragment>
-    )
-}
+              </div>
+            </Grid>
+          </Grid>
+        </div>
+      </div>
+      <div className="blurb">
+        <Grid container spacing={3}>
+          <Grid
+            item
+            xs={12}
+            md={12}
+            style={{ textAlign: "center", padding: "5rem" }}
+          >
+            <Typography variant="h3" style={{ color: "white" }}>
+              Forests are effective at offsetting carbon emissions
+            </Typography>
+          </Grid>
+        </Grid>
+      </div>
+      <div className="howitworks">
+        <Grid container spacing={3}>
+          <Grid
+            item
+            xs={12}
+            md={12}
+            style={{ textAlign: "center", padding: "2rem" }}
+          >
+            <Typography variant="h2">How it Works</Typography>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={4}
+            style={{ textAlign: "center", padding: "2rem" }}
+          >
+            <Paper style={{ padding: "1rem" }}>
+              <AddLocationIcon
+                style={{ fontSize: 100, padding: "1rem", color: "#3F3D4B" }}
+              />
+              <Typography
+                variant="h3"
+                style={{
+                  color: "#58C685",
+                  textAlign: "left",
+                  transform: "translate(0, -40px)"
+                }}
+              >
+                1.
+              </Typography>
+              <Typography variant="h6">{t("step1")}</Typography>
+            </Paper>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={4}
+            style={{ textAlign: "center", padding: "2rem" }}
+          >
+            <Paper style={{ padding: "1rem" }}>
+              <BlurCircularIcon
+                style={{ fontSize: 100, padding: "1rem", color: "#3F3D4B" }}
+              />
+              <Typography
+                variant="h3"
+                style={{
+                  color: "#58C685",
+                  textAlign: "left",
+                  transform: "translate(0, -40px)"
+                }}
+              >
+                2.
+              </Typography>
+              <Typography variant="h6">{t("step2")}</Typography>
+            </Paper>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={4}
+            style={{ textAlign: "center", padding: "2rem" }}
+          >
+            <Paper style={{ padding: "1rem" }}>
+              <AccessTimeIcon
+                style={{ fontSize: 100, padding: "1rem", color: "#3F3D4B" }}
+              />
+              <Typography
+                variant="h3"
+                style={{
+                  color: "#58C685",
+                  textAlign: "left",
+                  transform: "translate(0, -40px)"
+                }}
+              >
+                3.
+              </Typography>
+              <Typography variant="h6">{t("step3")}</Typography>
+            </Paper>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={4}
+            style={{ textAlign: "center", padding: "2rem" }}
+          >
+            <Paper style={{ padding: "1rem" }}>
+              <EcoIcon
+                style={{ fontSize: 100, padding: "1rem", color: "#3F3D4B" }}
+              />
+              <Typography
+                variant="h3"
+                style={{
+                  color: "#58C685",
+                  textAlign: "left",
+                  transform: "translate(0, -40px)"
+                }}
+              >
+                4.
+              </Typography>
+              <Typography variant="h6">{t("step4")}</Typography>
+            </Paper>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={4}
+            style={{ textAlign: "center", padding: "2rem" }}
+          >
+            <Paper style={{ padding: "1rem" }}>
+              <FireplaceIcon
+                style={{ fontSize: 100, padding: "1rem", color: "#3F3D4B" }}
+              />
+              <Typography
+                variant="h3"
+                style={{
+                  color: "#58C685",
+                  textAlign: "left",
+                  transform: "translate(0, -40px)"
+                }}
+              >
+                5.
+              </Typography>
+              <Typography variant="h6">{t("step5")}</Typography>
+            </Paper>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={4}
+            style={{ textAlign: "center", padding: "2rem" }}
+          >
+            <Paper style={{ padding: "1rem" }}>
+              <MonetizationOnIcon
+                style={{ fontSize: 100, padding: "1rem", color: "#3F3D4B" }}
+              />
+              <Typography
+                variant="h3"
+                style={{
+                  color: "#58C685",
+                  textAlign: "left",
+                  transform: "translate(0, -40px)"
+                }}
+              >
+                6.
+              </Typography>
+              <Typography variant="h6">
+                The farmer generates extra income through using their idle land
+              </Typography>
+            </Paper>
+          </Grid>
+        </Grid>
+      </div>
+      <div className="diffusion-hackathon">
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6} style={{ padding: "2rem" }}>
+            <img
+              src={diffusionHackathonImage}
+              style={{ width: "80%", padding: " 1rem 3rem", margin: "auto" }}
+            />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            style={{ textAlign: "right", padding: "2rem" }}
+          >
+            <Typography variant="h3" style={{ color: "white" }}>
+              This project was developed at the Diffusion 2019 Hackathon in
+              Berlin
+            </Typography>
+          </Grid>
+        </Grid>
+      </div>
+      <div className="benefits">
+        <Grid container spacing={3}>
+          <Grid
+            item
+            xs={12}
+            md={12}
+            style={{ textAlign: "center", paddingTop: "4rem" }}
+          >
+            <Typography variant="h2">Benefits</Typography>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={4}
+            style={{ textAlign: "center", padding: "2rem" }}
+          >
+            <LandscapeIcon
+              style={{ fontSize: 100, padding: "1rem", color: "#3F3D4B" }}
+            />
+            <Typography variant="h5">Combat Climate Change</Typography>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={4}
+            style={{ textAlign: "center", padding: "2rem" }}
+          >
+            <WorkIcon
+              style={{ fontSize: 100, padding: "1rem", color: "#3F3D4B" }}
+            />
+            <Typography variant="h5">Create's Employment</Typography>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={4}
+            style={{ textAlign: "center", padding: "2rem" }}
+          >
+            <StoreIcon
+              style={{ fontSize: 100, padding: "1rem", color: "#3F3D4B" }}
+            />
+            <Typography variant="h5">Transparent Market</Typography>
+          </Grid>
+        </Grid>
+      </div>
+    </Fragment>
+  );
+};
 
-export default home
+export default home;
